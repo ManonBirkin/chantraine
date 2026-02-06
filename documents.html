@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Documents utiles | Chantraine À-Venir</title>
+  <meta name="description" content="Documents réservés aux colistiers de la liste Chantraine À-Venir pour les municipales 2026." />
+
+  <!-- Typographies -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script defer src="script.js"></script>
+
+  <style>
+    /* Password gate styles */
+    .password-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+    }
+    .password-gate.is-hidden {
+      display: none;
+    }
+    .password-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .password-card-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-lg);
+    }
+    .password-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-sm);
+    }
+    .password-card p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+    .password-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .password-input {
+      width: 100%;
+      padding: var(--space-md);
+      font-family: inherit;
+      font-size: 1rem;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+      text-align: center;
+    }
+    .password-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: var(--shadow-glow);
+    }
+    .password-error {
+      color: #ef4444;
+      font-size: 0.875rem;
+      display: none;
+    }
+    .password-error.is-visible {
+      display: block;
+    }
+    /* Hide main content when locked */
+    .page-locked .page-texte,
+    .page-locked .footer {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="page-locked">
+
+  <!-- ================= PASSWORD GATE ================= -->
+  <div id="password-gate" class="password-gate">
+    <div class="password-card">
+      <img src="logo.png" alt="Chantraine À-Venir" class="password-card-logo">
+      <h2>Espace colistiers</h2>
+      <p>Cette section est réservée aux colistiers.<br>Veuillez entrer le mot de passe pour accéder aux documents.</p>
+      <form id="password-form" class="password-form">
+        <input
+          type="password"
+          id="password-input"
+          class="password-input"
+          placeholder="Mot de passe"
+          autocomplete="off"
+          required
+        >
+        <p id="password-error" class="password-error">Mot de passe incorrect</p>
+        <button type="submit" class="btn btn-primary">Accéder aux documents</button>
+      </form>
+      <p style="margin-top: var(--space-lg); margin-bottom: 0; font-size: 0.875rem;">
+        <a href="index.html">Retour à l'accueil</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var correctPassword = 'grenouille26';
+      var storageKey = 'cav-docs-auth';
+
+      var gate = document.getElementById('password-gate');
+      var form = document.getElementById('password-form');
+      var input = document.getElementById('password-input');
+      var error = document.getElementById('password-error');
+
+      function unlock() {
+        document.body.classList.remove('page-locked');
+        gate.classList.add('is-hidden');
+        sessionStorage.setItem(storageKey, 'true');
+      }
+
+      // Check if already authenticated in this session
+      if (sessionStorage.getItem(storageKey) === 'true') {
+        unlock();
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value === correctPassword) {
+          unlock();
+        } else {
+          error.classList.add('is-visible');
+          input.value = '';
+          input.focus();
+        }
+      });
+
+      input.addEventListener('input', function() {
+        error.classList.remove('is-visible');
+      });
+    })();
+  </script>
+
+  <!-- ================= CONTACT FACEBOOK ================= -->
+
+  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Nous contacter sur Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+
+  <!-- ================= MENU LATERAL ================= -->
+
+  <button id="menu-btn" class="menu-btn" type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="side-menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <div id="menu-overlay" class="menu-overlay" hidden></div>
+
+  <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
+    <div class="side-menu-header">
+      <div class="side-menu-brand">
+        <img src="logo.png" alt="" class="side-menu-logo">
+        <div>
+          <p class="brand-title">Chantraine À-Venir</p>
+          <p class="brand-subtitle">Municipales 2026</p>
+        </div>
+      </div>
+      <button id="menu-close" class="side-menu-close" type="button" aria-label="Fermer le menu">&#10005;</button>
+    </div>
+
+    <ul class="side-menu-links">
+      <li><a href="index.html"><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a></li>
+      <li><a href="projets.html"><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a></li>
+      <li><a href="equipe.html"><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a></li>
+      <li><a href="contact.html"><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a></li>
+      <li><a href="mentions-legales.html"><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a></li>
+    </ul>
+
+    <div class="side-menu-cta">
+      <a class="cta-primary" href="questionnaire.html">Questionnaire participatif</a>
+      <a class="cta-secondary" href="contact.html">Nous contacter</a>
+      <p class="cta-note">Vos idées comptent. Construisons ensemble.</p>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+
+  <header id="site-header">
+    <h1 class="header-title">Chantraine À-Venir</h1>
+  </header>
+
+  <!-- ================= CONTENU ================= -->
+
+  <main class="page-texte">
+
+    <h1>Documents utiles</h1>
+
+    <p class="reveal">
+      Retrouvez ici les documents officiels de la campagne <strong>Chantraine À-Venir</strong>.
+      Ces ressources sont mises à disposition du grand public et des colistiers
+      pour faciliter la compréhension et la diffusion de notre projet.
+    </p>
+
+    <!-- ===== BLOC 1 : AFFICHE DE CAMPAGNE ===== -->
+    <section class="documents-section reveal">
+      <div class="document-block">
+        <div class="document-header">
+          <span class="priority-badge badge-green">Grand public</span>
+          <h2>Affiche de campagne officielle</h2>
+          <p class="document-description">
+            L'affiche officielle de la liste Chantraine À-Venir pour les municipales 2026.
+            Téléchargeable en haute qualité pour impression (format A2/A1) ou consultation numérique.
+          </p>
+        </div>
+
+        <!-- Prévisualisation de l'affiche -->
+        <div class="poster-preview">
+          <div class="poster-frame">
+            <div class="poster-content">
+              <div class="poster-top">
+                <span class="poster-election">Municipales 2026 &middot; Chantraine (Vosges)</span>
+              </div>
+
+              <div class="poster-hero">
+                <div class="poster-candidate">
+                  <img src="dany.png" alt="Jean-Daniel Boxberger" class="poster-candidate-photo">
+                  <p class="poster-candidate-name">Jean-Daniel Boxberger</p>
+                  <p class="poster-candidate-role">Tête de liste</p>
+                </div>
+              </div>
+
+              <div class="poster-title-section">
+                <img src="logo.png" alt="" class="poster-logo">
+                <h3 class="poster-title">Chantraine À-Venir</h3>
+                <p class="poster-slogan">Ensemble, construisons l'avenir de notre commune</p>
+              </div>
+
+              <div class="poster-team">
+                <img src="equipe.jpg" alt="L'équipe Chantraine À-Venir" class="poster-team-photo">
+                <p class="poster-team-caption">23 femmes et hommes engagés au service de Chantraine</p>
+              </div>
+
+              <div class="poster-values">
+                <span class="poster-value">Proximité</span>
+                <span class="poster-value">Pragmatisme</span>
+                <span class="poster-value">Transparence</span>
+                <span class="poster-value">Optimisme</span>
+              </div>
+
+              <div class="poster-footer">
+                <p class="poster-website">chantraine-a-venir.fr</p>
+              </div>
+            </div>
+          </div>
+          <p class="poster-note">Aperçu de l'affiche</p>
+        </div>
+
+        <div class="document-actions">
+          <p class="document-unavailable">
+            <span aria-hidden="true">&#x23F3;</span>
+            Les fichiers de l'affiche sont en cours de préparation et seront disponibles prochainement.
+          </p>
+        </div>
+
+        <div class="document-specs">
+          <p><strong>Formats disponibles :</strong> PDF haute résolution, JPG</p>
+          <p><strong>Dimensions recommandées :</strong> A2 (420×594 mm) ou A1 (594×841 mm)</p>
+          <p><strong>Usage :</strong> Affichage public, diffusion numérique, impression</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BLOC 2 : RAPPORT DE SYNTHESE ===== -->
+    <section class="documents-section reveal">
+      <div class="document-block">
+        <div class="document-header">
+          <span class="priority-badge badge-blue">Colistiers</span>
+          <h2>Rapport de synthèse</h2>
+          <p class="document-description">
+            Document de référence interne destiné aux colistiers pour présenter clairement le projet,
+            harmoniser le discours sur le terrain et faciliter les échanges avec les habitants.
+          </p>
+        </div>
+
+        <!-- Aperçu du contenu du rapport -->
+        <div class="report-preview">
+          <div class="report-toc">
+            <h3 class="report-toc-title">Sommaire du rapport</h3>
+            <ol class="report-toc-list">
+              <li>
+                <span class="toc-number">1</span>
+                <div class="toc-content">
+                  <strong>Introduction</strong>
+                  <p>Philosophie de la liste, positionnement et rôle des colistiers</p>
+                </div>
+              </li>
+              <li>
+                <span class="toc-number">2</span>
+                <div class="toc-content">
+                  <strong>Synthèse des projets</strong>
+                  <p>Les trois axes majeurs : Cadre de vie, Bien vivre ensemble, Dynamisme économique</p>
+                </div>
+              </li>
+              <li>
+                <span class="toc-number">3</span>
+                <div class="toc-content">
+                  <strong>Équipe et trombinoscope</strong>
+                  <p>Présentation des 23 colistiers et leurs engagements</p>
+                </div>
+              </li>
+              <li>
+                <span class="toc-number">4</span>
+                <div class="toc-content">
+                  <strong>Messages-clés pour le terrain</strong>
+                  <p>Arguments et réponses types pour les échanges avec les habitants</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Extrait du rapport -->
+          <div class="report-excerpt">
+            <h4 class="report-excerpt-title">Extrait : Messages-clés</h4>
+            <div class="key-messages">
+              <div class="key-message">
+                <span class="key-message-icon" aria-hidden="true">&#x1F4AC;</span>
+                <div>
+                  <strong>Présenter le projet</strong>
+                  <p>« Nous portons un projet de proximité, concret et réaliste, construit à partir des besoins exprimés par les habitants de Chantraine. »</p>
+                </div>
+              </div>
+              <div class="key-message">
+                <span class="key-message-icon" aria-hidden="true">&#x1F465;</span>
+                <div>
+                  <strong>Présenter l'équipe</strong>
+                  <p>« Notre équipe réunit 23 femmes et hommes aux parcours complémentaires, tous engagés bénévolement au service de la commune. »</p>
+                </div>
+              </div>
+              <div class="key-message">
+                <span class="key-message-icon" aria-hidden="true">&#x2728;</span>
+                <div>
+                  <strong>Présenter l'esprit de la liste</strong>
+                  <p>« Chantraine À-Venir incarne une démarche citoyenne fondée sur l'écoute, la transparence et l'action concrète. »</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="document-actions">
+          <a href="livret-colistier.pdf" class="btn btn-primary" download>
+            <span aria-hidden="true">&#x1F4E5;</span> Télécharger le PDF
+          </a>
+          <a href="rapport-synthese.html" class="btn btn-secondary">
+            <span aria-hidden="true">&#x1F4D6;</span> Consulter en ligne
+          </a>
+        </div>
+
+        <div class="document-specs">
+          <p><strong>Format :</strong> PDF optimisé pour lecture et impression</p>
+          <p><strong>Pages :</strong> Document complet avec infographies intégrées</p>
+          <p><strong>Usage :</strong> Référence terrain, formation colistiers, préparation porte-à-porte</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION RAPPEL ===== -->
+    <section class="documents-reminder reveal">
+      <div class="reminder-card">
+        <span class="reminder-icon" aria-hidden="true">&#x1F4A1;</span>
+        <div class="reminder-content">
+          <h3>Besoin d'autres documents ?</h3>
+          <p>
+            Pour toute demande spécifique (visuels pour réseaux sociaux, tracts, etc.),
+            n'hésitez pas à contacter l'équipe de campagne.
+          </p>
+          <a href="contact.html" class="btn btn-ghost">Nous contacter</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <div>
+            <p class="footer-name">Chantraine À-Venir</p>
+            <p class="footer-tagline">Municipales 2026</p>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navigation pied de page">
+          <a href="index.html">Accueil</a>
+          <a href="projets.html">Projets</a>
+          <a href="equipe.html">Équipe</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="footer-legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <a href="documents.html">Documents utiles</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <span>&copy; 2026 Chantraine À-Venir</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

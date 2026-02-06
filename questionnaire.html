@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Questionnaire participatif | Chantraine À-Venir</title>
+  <meta name="description" content="Participez au questionnaire citoyen de la liste Chantraine À-Venir. Votre avis compte pour construire l'avenir de notre commune." />
+
+  <!-- Typographies -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script defer src="script.js"></script>
+
+  <style>
+    .questionnaire-logo{
+      margin: 1.1rem 0 1.4rem;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .questionnaire-logo img{
+      width: 90px;
+      height: auto;
+      opacity: 0.95;
+    }
+
+    .scroll-indicator{
+      margin-top: 1.6rem;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .scroll-arrow{
+      font-size: 2rem;
+      opacity: .7;
+      animation: cav-bounce 1.8s infinite;
+      user-select: none;
+    }
+    .scroll-indicator.is-hidden{
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+    @keyframes cav-bounce{
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(8px); }
+      60% { transform: translateY(4px); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= CONTACT FACEBOOK ================= -->
+
+  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Nous contacter sur Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+
+  <!-- ================= MENU LATERAL ================= -->
+
+  <button id="menu-btn" class="menu-btn" type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="side-menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <div id="menu-overlay" class="menu-overlay" hidden></div>
+
+  <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
+    <div class="side-menu-header">
+      <div class="side-menu-brand">
+        <img src="logo.png" alt="" class="side-menu-logo">
+        <div>
+          <p class="brand-title">Chantraine À-Venir</p>
+          <p class="brand-subtitle">Municipales 2026</p>
+        </div>
+      </div>
+      <button id="menu-close" class="side-menu-close" type="button" aria-label="Fermer le menu">&#10005;</button>
+    </div>
+
+    <ul class="side-menu-links">
+      <li><a href='/'><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a></li>
+      <li><a href='/projets'><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a></li>
+      <li><a href='/equipe'><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a></li>
+      <li><a href='/contact'><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a></li>
+      <li><a href='/mentions-legales'><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a></li>
+    </ul>
+
+    <div class="side-menu-cta">
+      <a class='cta-primary is-active' href='/questionnaire'>Questionnaire participatif</a>
+      <a class='cta-secondary' href='/contact'>Nous contacter</a>
+      <p class="cta-note">Vos idées comptent. Construisons ensemble.</p>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+
+  <header id="site-header">
+    <h1 class="header-title">Chantraine À-Venir</h1>
+  </header>
+
+  <!-- ================= CONTENU ================= -->
+
+  <main class="page-texte questionnaire-page">
+    <div class="questionnaire-header reveal">
+      <span class="section-tag">Participez</span>
+
+      <h1>Questionnaire participatif</h1>
+
+      <!-- Logo sous le titre -->
+      <div class="questionnaire-logo" aria-hidden="true">
+        <img src="logo.png" alt="">
+      </div>
+
+      <p class="questionnaire-intro">
+        Votre avis compte ! Ce questionnaire nous aide à mieux comprendre vos attentes
+        et à construire un projet au plus proche de vos besoins.
+      </p>
+
+      <!-- Flèche scroll -->
+      <div class="scroll-indicator" id="scroll-indicator" aria-hidden="true">
+        <span class="scroll-arrow">&#x2193;</span>
+      </div>
+    </div>
+
+    <form id="questionnaire-form"
+          class="questionnaire-form reveal"
+          name="questionnaire"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field">
+
+      <!-- ✅ IMPORTANT : champ requis par Netlify Forms -->
+      <input type="hidden" name="form-name" value="questionnaire">
+      <!-- (optionnel) -->
+      <input type="hidden" name="subject" value="Questionnaire participatif - Chantraine À-Venir">
+
+      <!-- Anti-spam honeypot -->
+      <p style="display:none;">
+        <label>Ne pas remplir : <input name="bot-field" /></label>
+      </p>
+
+      <!-- ===== INFORMATIONS PERSONNELLES ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Informations (facultatives)</legend>
+
+        <div class="q-field">
+          <label for="nom" class="q-label">Nom / Prénom</label>
+          <input id="nom" name="nom_prenom" type="text" class="q-input" autocomplete="name" />
+        </div>
+
+        <div class="q-field">
+          <p class="q-label">Tranche d'âge</p>
+          <div class="q-radio-group">
+            <label class="q-radio"><input type="radio" name="tranche_age" value="-18 ans"> -18 ans</label>
+            <label class="q-radio"><input type="radio" name="tranche_age" value="18-29 ans"> 18-29 ans</label>
+            <label class="q-radio"><input type="radio" name="tranche_age" value="30-44 ans"> 30-44 ans</label>
+            <label class="q-radio"><input type="radio" name="tranche_age" value="45-59 ans"> 45-59 ans</label>
+            <label class="q-radio"><input type="radio" name="tranche_age" value="60-74 ans"> 60-74 ans</label>
+            <label class="q-radio"><input type="radio" name="tranche_age" value="75 ans et +"> 75 ans et +</label>
+          </div>
+        </div>
+
+        <div class="q-field">
+          <label for="telephone" class="q-label">Téléphone</label>
+          <input id="telephone" name="telephone" type="tel" class="q-input" autocomplete="tel" />
+        </div>
+
+        <div class="q-field">
+          <label for="email" class="q-label">Email</label>
+          <input id="email" name="email" type="email" class="q-input" autocomplete="email" />
+        </div>
+      </fieldset>
+
+      <!-- ===== SECURITE ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">La sécurité à Chantraine</legend>
+        <p class="q-question">D'une manière générale, vous sentez-vous en sécurité ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="securite_general" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="securite_general" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="securite_general" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="securite_remarques" class="q-label">Vos remarques</label>
+          <textarea id="securite_remarques" name="securite_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== SANTE ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Santé</legend>
+        <p class="q-question">Proposer l'accueil de nouveaux professionnels de santé vous apparaît comme :</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="sante_professionnels" value="Une nécessité"> Une nécessité</label>
+          <label class="q-radio"><input type="radio" name="sante_professionnels" value="Pourquoi pas"> Pourquoi pas</label>
+          <label class="q-radio"><input type="radio" name="sante_professionnels" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="sante_remarques" class="q-label">Vos remarques</label>
+          <textarea id="sante_remarques" name="sante_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== IMPOTS ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Le saviez-vous ?</legend>
+        <p class="q-question">La part communale des impôts fonciers n'a pas augmenté depuis 2010.</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="impots_remarques" class="q-label">Vos remarques</label>
+          <textarea id="impots_remarques" name="impots_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== JEUNESSE ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">La jeunesse à Chantraine</legend>
+        <p class="q-question">Les services et infrastructures pour notre jeunesse vous semblent-ils suffisants ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="jeunesse_services" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="jeunesse_services" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="jeunesse_services" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="jeunesse_remarques" class="q-label">Vos remarques</label>
+          <textarea id="jeunesse_remarques" name="jeunesse_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== ACTIONS SOCIALES ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Actions sociales</legend>
+        <p class="q-question">Le lien et les actions sociales sont-ils suffisants ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="actions_sociales" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="actions_sociales" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="actions_sociales" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="social_remarques" class="q-label">Vos remarques</label>
+          <textarea id="social_remarques" name="social_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== ATTRACTIVITE ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Attractivité</legend>
+        <p class="q-question">Chantraine vous paraît-elle être une commune attractive ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="attractivite" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="attractivite" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="attractivite" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="attractivite_remarques" class="q-label">Vos remarques</label>
+          <textarea id="attractivite_remarques" name="attractivite_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== LOISIRS ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Loisirs, culture et vie associative</legend>
+        <p class="q-question">L'offre est-elle suffisante ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="loisirs_offre" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="loisirs_offre" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="loisirs_offre" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="loisirs_remarques" class="q-label">Vos remarques</label>
+          <textarea id="loisirs_remarques" name="loisirs_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== EVENEMENTS ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Nos événements</legend>
+        <p class="q-question">En fait-on assez... ou pas ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="evenements_idees" class="q-label">Vos idées, vos envies</label>
+          <textarea id="evenements_idees" name="evenements_idees" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== CAE ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Communauté d'Agglomération d'Épinal (CAE)</legend>
+        <p class="q-question">A-t-elle un impact visible sur Chantraine ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="cae_impact" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="cae_impact" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="cae_impact" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="cae_remarques" class="q-label">Vos remarques</label>
+          <textarea id="cae_remarques" name="cae_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== REPRESENTATION ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Représentation</legend>
+        <p class="q-question">Notre commune est-elle suffisamment représentée à la CAE ?</p>
+        <div class="q-radio-inline">
+          <label class="q-radio"><input type="radio" name="representation" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="representation" value="Non"> Non</label>
+          <label class="q-radio"><input type="radio" name="representation" value="Je ne sais pas"> Je ne sais pas</label>
+        </div>
+        <div class="q-field">
+          <label for="representation_remarques" class="q-label">Vos remarques</label>
+          <textarea id="representation_remarques" name="representation_remarques" class="q-textarea" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- ===== IDEES ===== -->
+      <fieldset class="q-fieldset">
+        <legend class="q-legend">Vos idées pour Chantraine !</legend>
+        <p class="q-question">Projets, rêves, envies, coups de coeur... on prend tout !</p>
+        <div class="q-field">
+          <textarea name="idees_pour_chantraine" class="q-textarea" rows="5"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="q-submit-area">
+        <button type="submit" class="btn btn-primary btn-lg" id="q-submit-btn">Soumettre mes réponses</button>
+        <p class="q-hint">Vos réponses seront enregistrées de manière confidentielle.</p>
+      </div>
+    </form>
+
+    <div id="q-error" class="q-error-message" style="display:none;">
+      <p>Une erreur est survenue lors de l'envoi. Veuillez réessayer.</p>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <div>
+            <p class="footer-name">Chantraine À-Venir</p>
+            <p class="footer-tagline">Municipales 2026</p>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navigation pied de page">
+          <a href='/'>Accueil</a>
+          <a href='/projets'>Projets</a>
+          <a href='/equipe'>Équipe</a>
+          <a href='/contact'>Contact</a>
+        </nav>
+
+        <div class="footer-legal">
+          <a href='/mentions-legales'>Mentions légales</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <a href='/documents'>Documents utiles</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <span>&copy; 2026 Chantraine À-Venir</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= FORM SUBMISSION SCRIPT (FIXED) ================= -->
+ <script>
+(function () {
+  var form = document.getElementById('questionnaire-form');
+  var submitBtn = document.getElementById('q-submit-btn');
+  var errorDiv = document.getElementById('q-error');
+
+  function showError(msg){
+    errorDiv.style.display = 'block';
+    var p = errorDiv.querySelector('p');
+    if (p) p.textContent = msg || "Une erreur est survenue lors de l'envoi. Veuillez réessayer.";
+  }
+
+  async function safeText(res){
+    try { return await res.text(); } catch(e) { return ""; }
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    errorDiv.style.display = 'none';
+
+    var formData = new FormData(form);
+
+    // Honeypot
+    if (formData.get('bot-field')) return;
+
+    // Au moins un champ rempli (hors meta)
+    var hasAtLeastOneAnswer = false;
+    formData.forEach(function (value, key) {
+      if (key === 'bot-field' || key === 'form-name' || key === 'subject') return;
+      if (typeof value === 'string' && value.trim() !== '') hasAtLeastOneAnswer = true;
+    });
+
+    if (!hasAtLeastOneAnswer) {
+      showError("Merci de répondre au moins à une question (ou d'ajouter une remarque).");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    // JSON pour la function (sans meta)
+    var jsonData = {};
+    formData.forEach(function (value, key) {
+      if (key === 'bot-field' || key === 'form-name' || key === 'subject') return;
+      jsonData[key] = value;
+    });
+
+    // 👉 IMPORTANT : poste Netlify Forms sur l’URL courante (plus fiable que '/')
+    var formsUrl = window.location.pathname; // ex: /questionnaire
+    if (!formsUrl || formsUrl.trim() === "") formsUrl = "/";
+
+    try {
+      // 1) Netlify Forms
+      var formsRes = await fetch(formsUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (!formsRes.ok) {
+        var t0 = await safeText(formsRes);
+        console.error("❌ Netlify Forms KO", formsRes.status, t0);
+        showError("Soumission Netlify Forms refusée (" + formsRes.status + "). Ouvre la console (F12) pour le détail.");
+        throw new Error("Forms KO");
+      }
+
+      // 2) Function
+      var fnRes = await fetch('/.netlify/functions/submit-questionnaire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonData)
+      });
+
+      if (!fnRes.ok) {
+        var t1 = await safeText(fnRes);
+        console.error("❌ Function KO", fnRes.status, t1);
+        showError("Erreur function (" + fnRes.status + "). Ouvre la console (F12) pour le détail.");
+        throw new Error("Function KO");
+      }
+
+      // OK
+      window.location.href = '/merci';
+
+    } catch (err) {
+      // si on a déjà affiché un message plus précis, on n’écrase pas
+      if (errorDiv.style.display !== 'block') {
+        showError("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+      }
+      console.error(err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Soumettre mes réponses';
+    }
+  });
+})();
+</script>
+
+
+  <!-- Disparition flèche dès qu'on scrolle -->
+  <script>
+    (function () {
+      var indicator = document.getElementById('scroll-indicator');
+      if (!indicator) return;
+
+      function hide(){ indicator.classList.add('is-hidden'); }
+
+      if (window.scrollY > 10) hide();
+      window.addEventListener('scroll', hide, { once: true, passive: true });
+    })();
+  </script>
+
+</body>
+</html>

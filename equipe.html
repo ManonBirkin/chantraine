@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Notre équipe | Chantraine À-Venir</title>
+  <meta name="description" content="Découvrez les femmes et les hommes qui composent la liste Chantraine À-Venir pour les municipales 2026." />
+
+  <!-- Typographies -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- ================= CONTACT FACEBOOK ================= -->
+
+  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Nous contacter sur Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+
+  <!-- ================= MENU LATERAL ================= -->
+
+  <button id="menu-btn" class="menu-btn" type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="side-menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <div id="menu-overlay" class="menu-overlay" hidden></div>
+
+  <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
+    <div class="side-menu-header">
+      <div class="side-menu-brand">
+        <img src="logo.png" alt="" class="side-menu-logo">
+        <div>
+          <p class="brand-title">Chantraine À-Venir</p>
+          <p class="brand-subtitle">Municipales 2026</p>
+        </div>
+      </div>
+      <button id="menu-close" class="side-menu-close" type="button" aria-label="Fermer le menu">&#10005;</button>
+    </div>
+
+    <ul class="side-menu-links">
+      <li><a href="index.html"><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a></li>
+      <li><a href="projets.html"><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a></li>
+      <li><a href="equipe.html" class="is-active"><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a></li>
+      <li><a href="contact.html"><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a></li>
+      <li><a href="mentions-legales.html"><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a></li>
+    </ul>
+
+    <div class="side-menu-cta">
+      <a class="cta-primary" href="questionnaire.html">Questionnaire participatif</a>
+      <a class="cta-secondary" href="contact.html">Nous contacter</a>
+      <p class="cta-note">Vos idées comptent. Construisons ensemble.</p>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+
+  <header id="site-header">
+    <h1 class="header-title">Chantraine À-Venir</h1>
+  </header>
+
+  <!-- ================= CONTENU ================= -->
+
+  <main class="page-texte">
+
+    <h1>Notre équipe</h1>
+
+    <p class="reveal">
+      La liste <strong>Chantraine À-Venir</strong> est composée de femmes et d'hommes
+      aux parcours variés, unis par un engagement commun au service de la commune
+      et de ses habitants.
+    </p>
+
+    <!-- Infographie récap équipe -->
+    <img
+      src="1.jpg"
+      alt="Infographie récapitulative – Présentation de l'équipe Chantraine À-Venir"
+      class="equipe-recap scale-in"
+      data-zoom="1"
+      loading="lazy"
+    >
+
+    <!-- ================= TROMBINOSCOPE ================= -->
+
+    <section class="trombi-section reveal" aria-label="Trombinoscope interactif">
+      <div class="trombi-wrapper trombi-wrapper--large">
+
+        <img
+          src="2.jpg"
+          alt="Trombinoscope de l'équipe Chantraine À-Venir"
+          class="trombi-image"
+          loading="lazy"
+        >
+
+      <button type="button" class="trombi-item" style="--r:1;--c:1;" aria-label="Jean-Daniel Boxberger">
+    <div class="trombi-bubble">
+      « Mon objectif est de continuer à œuvrer pour Chantraine aux côtés d'une équipe compétente, motivée et pleinement engagée au service de nos concitoyens. »
+      <span>Jean-Daniel Boxberger</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:1;--c:2;" aria-label="Valérie Bigenho-Poët">
+    <div class="trombi-bubble">
+      « J’ai envie de m’investir et de partager une belle expérience collective au service de Chantraine. »
+      <span>Valérie Bigenho-Poët</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:1;--c:3;" aria-label="Michel Mulot">
+    <div class="trombi-bubble">
+      « J’ai envie de partager un beau projet collectif au service de la commune. »
+      <span>Michel Mulot</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:1;--c:4;" aria-label="Odile Frechin">
+    <div class="trombi-bubble">
+      « Je souhaite apporter mes compétences au service des habitants de Chantraine. »
+      <span>Odile Frechin</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:1;--c:5;" aria-label="Denis Lemuhot">
+    <div class="trombi-bubble">
+      « L’engagement municipal me permet de m’investir au service des administrés et de l’intérêt collectif. »
+      <span>Denis Lemuhot</span>
+    </div>
+  </button>
+
+  <!-- ===== LIGNE 2 ===== -->
+  <button type="button" class="trombi-item" style="--r:2;--c:1;" aria-label="Sandrine Laborde">
+    <div class="trombi-bubble">
+      « J’ai rejoint cette équipe dynamique pour construire ensemble de beaux projets au service des Chantrainois. »
+      <span>Sandrine Laborde</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:2;--c:2;" aria-label="Nicolas Petin">
+    <div class="trombi-bubble">
+      « J’aime ma ville, je la souhaite sûre. Je veux y apporter mes compétences et m’impliquer au quotidien. »
+      <span>Nicolas Petin</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:2;--c:3;" aria-label="Julie Ruaux">
+    <div class="trombi-bubble">
+      « J’aime ma commune et je souhaite participer à son avenir. »
+      <span>Julie Ruaux</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:2;--c:4;" aria-label="Arnaud Zanier">
+    <div class="trombi-bubble">
+      « La commune de Chantraine m’a beaucoup apporté. Je souhaite aujourd’hui m’engager à mon tour pour les autres. »
+      <span>Arnaud Zanier</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:2;--c:5;" aria-label="Alexandra Plenert">
+    <div class="trombi-bubble">
+      « Avec engagement, respect et bienveillance, je m’investis pour une commune qui avance ensemble. »
+      <span>Alexandra Plenert</span>
+    </div>
+  </button>
+
+  <!-- ===== LIGNE 3 ===== -->
+  <button type="button" class="trombi-item" style="--r:3;--c:1;" aria-label="Jackie Luiggi">
+    <div class="trombi-bubble">
+      « Je souhaite participer, grâce à mon expérience de la gestion de services publics, au développement du bien-vivre et de l'attractivité de Chantraine, commune à laquelle je suis particulièrement attaché depuis mon enfance.»
+      <span>Jackie Luiggi</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:3;--c:2;" aria-label="Marie Zaegel">
+    <div class="trombi-bubble">
+      « Je souhaite m’investir et participer activement au vivre-ensemble de notre commune, au sein d’une équipe motivée et dynamique. »
+      <span>Marie Zaegel</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:3;--c:3;" aria-label="Jacques Chapon">
+    <div class="trombi-bubble">
+      « Je m’engage pour un mandat alliant rigueur financière, soutien à l’économie locale et développement des énergies renouvelables, au service de la population. »
+      <span>Jacques Chapon</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:3;--c:4;" aria-label="Sandrine Colombo">
+    <div class="trombi-bubble">
+      « Je souhaite apporter mes idées et mon dynamisme au projet municipal. »
+      <span>Sandrine Colombo</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:3;--c:5;" aria-label="Claude Champreux">
+    <div class="trombi-bubble">
+      « Je souhaite participer à la vie de la collectivité avec engagement. »
+      <span>Claude Champreux</span>
+    </div>
+  </button>
+
+  <!-- ===== LIGNE 4 ===== -->
+  <button type="button" class="trombi-item" style="--r:4;--c:1;" aria-label="Mahaut Gauthier">
+    <div class="trombi-bubble">
+      « Je me présente aux élections de ma commune pour m’engager sincèrement au service du territoire, à l’écoute des habitants et au bénéfice de l’intérêt collectif. »
+      <span>Mahaut Gauthier</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:4;--c:2;" aria-label="Pascal Lamboley">
+    <div class="trombi-bubble">
+      « Je veux continuer à œuvrer au service des habitants, et plus particulièrement de la communauté éducative, pilier de notre avenir collectif. »
+      <span>Pascal Lamboley</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:4;--c:3;" aria-label="Aurore George">
+    <div class="trombi-bubble">
+      « J’aime la ville de Chantraine et je souhaite m’impliquer activement dans sa vie locale. »
+      <span>Aurore George</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:4;--c:4;" aria-label="Marc Biazizzo">
+    <div class="trombi-bubble">
+      « Animé par l’engagement local, je rejoins cette équipe pour porter un projet commun et mettre mon expertise dans le domaine du sport au service du dynamisme, de la santé et du vivre-ensemble à Chantraine. »
+      <span>Marc Biazizzo</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:4;--c:5;" aria-label="Bernadette Lagarde">
+    <div class="trombi-bubble">
+      « Je m’engage pour une politique municipale humaine, fondée sur les initiatives locales et le maintien du lien social. »
+      <span>Bernadette Lagarde</span>
+    </div>
+  </button>
+
+  <!-- ===== LIGNE 5 ===== -->
+  <button type="button" class="trombi-item" style="--r:5;--c:1;" aria-label="Éric Baumann">
+    <div class="trombi-bubble">
+      « J’ai envie de rendre service et d’être utile aux habitants. »
+      <span>Éric Baumann</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:5;--c:2;" aria-label="Yolande Oswald">
+    <div class="trombi-bubble">
+      « Je souhaite mettre mon expérience et mon sens de l’écoute au service de la collectivité et du lien social. »
+      <span>Yolande Oswald</span>
+    </div>
+  </button>
+
+  <button type="button" class="trombi-item" style="--r:5;--c:3;" aria-label="Max Richard">
+    <div class="trombi-bubble">
+      « Je m’engage avec une équipe motivée et compétente pour réaliser avec vous et pour vous des projets innovants et structurants pour notre belle commune. »
+      <span>Max Richard</span>
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <div>
+            <p class="footer-name">Chantraine À-Venir</p>
+            <p class="footer-tagline">Municipales 2026</p>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navigation pied de page">
+          <a href="index.html">Accueil</a>
+          <a href="projets.html">Projets</a>
+          <a href="equipe.html">Équipe</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="footer-legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <a href="documents.html">Documents utiles</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <span>&copy; 2026 Chantraine À-Venir</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

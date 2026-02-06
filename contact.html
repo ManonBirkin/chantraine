@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact | Chantraine À-Venir</title>
+  <meta name="description" content="Contactez la liste Chantraine À-Venir. Nous sommes à l'écoute de vos idées et suggestions." />
+
+  <!-- Typographies -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- ================= CONTACT FACEBOOK ================= -->
+
+  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Nous contacter sur Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+
+  <!-- ================= MENU LATERAL ================= -->
+
+  <button id="menu-btn" class="menu-btn" type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="side-menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <div id="menu-overlay" class="menu-overlay" hidden></div>
+
+  <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
+    <div class="side-menu-header">
+      <div class="side-menu-brand">
+        <img src="logo.png" alt="" class="side-menu-logo">
+        <div>
+          <p class="brand-title">Chantraine À-Venir</p>
+          <p class="brand-subtitle">Municipales 2026</p>
+        </div>
+      </div>
+      <button id="menu-close" class="side-menu-close" type="button" aria-label="Fermer le menu">&#10005;</button>
+    </div>
+
+    <ul class="side-menu-links">
+      <li><a href="index.html"><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a></li>
+      <li><a href="projets.html"><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a></li>
+      <li><a href="equipe.html"><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a></li>
+      <li><a href="contact.html" class="is-active"><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a></li>
+      <li><a href="mentions-legales.html"><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a></li>
+    </ul>
+
+    <div class="side-menu-cta">
+      <a class="cta-primary" href="questionnaire.html">Questionnaire participatif</a>
+      <a class="cta-secondary" href="contact.html">Nous contacter</a>
+      <p class="cta-note">Vos idées comptent. Construisons ensemble.</p>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+
+  <header id="site-header">
+    <h1 class="header-title">Chantraine À-Venir</h1>
+  </header>
+
+  <!-- ================= CONTENU ================= -->
+
+  <main class="page-texte">
+    <h1>Contact</h1>
+
+    <!-- Illustration -->
+    <div class="contact-illustration scale-in">
+      <img
+        src="grenoumail.png"
+        alt="Grenouille du logo Chantraine À-Venir envoyant un message"
+        loading="lazy"
+      >
+    </div>
+
+    <p class="reveal">
+      Vous pouvez nous joindre facilement. Nous lisons vos messages avec attention
+      et nous nous engageons à vous répondre.
+    </p>
+
+    <div class="contact-info reveal pulse-glow" role="region" aria-label="Coordonnées de contact">
+      <p style="margin: 0;">
+        <span aria-hidden="true" style="font-size: 1.5rem; margin-right: 8px;">&#x2709;</span>
+        <strong>Email :</strong>
+        <a href="mailto:contact@chantraine-a-venir.fr">contact@chantraine-a-venir.fr</a>
+      </p>
+    </div>
+
+    <p class="reveal">
+      Si vous souhaitez partager une idée, un besoin ou une question, n'hésitez pas :
+      cela nous aide à construire un projet <strong>utile et concret</strong> pour Chantraine.
+    </p>
+
+    <p class="reveal" style="color: var(--text-muted); font-size: 0.9375rem;">
+      <em>Vos idées comptent. Construisons ensemble l'avenir de notre commune.</em>
+    </p>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <div>
+            <p class="footer-name">Chantraine À-Venir</p>
+            <p class="footer-tagline">Municipales 2026</p>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navigation pied de page">
+          <a href="index.html">Accueil</a>
+          <a href="projets.html">Projets</a>
+          <a href="equipe.html">Équipe</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="footer-legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <a href="documents.html">Documents utiles</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <span>&copy; 2026 Chantraine À-Venir</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

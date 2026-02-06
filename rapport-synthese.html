@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rapport de synthèse | Chantraine À-Venir</title>
+  <meta name="description" content="Rapport de synthèse pour les colistiers de la liste Chantraine À-Venir - Municipales 2026." />
+
+  <!-- Typographies -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <script defer src="script.js"></script>
+
+  <style>
+    /* Password gate styles */
+    .password-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+    }
+    .password-gate.is-hidden {
+      display: none;
+    }
+    .password-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .password-card-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-lg);
+    }
+    .password-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-sm);
+    }
+    .password-card p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+    .password-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .password-input {
+      width: 100%;
+      padding: var(--space-md);
+      font-family: inherit;
+      font-size: 1rem;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+      text-align: center;
+    }
+    .password-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: var(--shadow-glow);
+    }
+    .password-error {
+      color: #ef4444;
+      font-size: 0.875rem;
+      display: none;
+    }
+    .password-error.is-visible {
+      display: block;
+    }
+    /* Hide main content when locked */
+    .page-locked .page-texte,
+    .page-locked .footer {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="page-locked">
+
+  <!-- ================= PASSWORD GATE ================= -->
+  <div id="password-gate" class="password-gate">
+    <div class="password-card">
+      <img src="logo.png" alt="Chantraine À-Venir" class="password-card-logo">
+      <h2>Espace colistiers</h2>
+      <p>Cette section est réservée aux colistiers.<br>Veuillez entrer le mot de passe pour accéder aux documents.</p>
+      <form id="password-form" class="password-form">
+        <input
+          type="password"
+          id="password-input"
+          class="password-input"
+          placeholder="Mot de passe"
+          autocomplete="off"
+          required
+        >
+        <p id="password-error" class="password-error">Mot de passe incorrect</p>
+        <button type="submit" class="btn btn-primary">Accéder aux documents</button>
+      </form>
+      <p style="margin-top: var(--space-lg); margin-bottom: 0; font-size: 0.875rem;">
+        <a href="index.html">Retour à l'accueil</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var correctPassword = 'grenouille26';
+      var storageKey = 'cav-docs-auth';
+
+      var gate = document.getElementById('password-gate');
+      var form = document.getElementById('password-form');
+      var input = document.getElementById('password-input');
+      var error = document.getElementById('password-error');
+
+      function unlock() {
+        document.body.classList.remove('page-locked');
+        gate.classList.add('is-hidden');
+        sessionStorage.setItem(storageKey, 'true');
+      }
+
+      // Check if already authenticated in this session
+      if (sessionStorage.getItem(storageKey) === 'true') {
+        unlock();
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value === correctPassword) {
+          unlock();
+        } else {
+          error.classList.add('is-visible');
+          input.value = '';
+          input.focus();
+        }
+      });
+
+      input.addEventListener('input', function() {
+        error.classList.remove('is-visible');
+      });
+    })();
+  </script>
+
+  <!-- ================= CONTACT FACEBOOK ================= -->
+
+  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Nous contacter sur Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+
+  <!-- ================= MENU LATERAL ================= -->
+
+  <button id="menu-btn" class="menu-btn" type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="side-menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <div id="menu-overlay" class="menu-overlay" hidden></div>
+
+  <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
+    <div class="side-menu-header">
+      <div class="side-menu-brand">
+        <img src="logo.png" alt="" class="side-menu-logo">
+        <div>
+          <p class="brand-title">Chantraine À-Venir</p>
+          <p class="brand-subtitle">Municipales 2026</p>
+        </div>
+      </div>
+      <button id="menu-close" class="side-menu-close" type="button" aria-label="Fermer le menu">&#10005;</button>
+    </div>
+
+    <ul class="side-menu-links">
+      <li><a href="index.html"><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a></li>
+      <li><a href="projets.html"><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a></li>
+      <li><a href="equipe.html"><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a></li>
+      <li><a href="contact.html"><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a></li>
+      <li><a href="mentions-legales.html"><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a></li>
+    </ul>
+
+    <div class="side-menu-cta">
+      <a class="cta-primary" href="questionnaire.html">Questionnaire participatif</a>
+      <a class="cta-secondary" href="contact.html">Nous contacter</a>
+      <p class="cta-note">Vos idées comptent. Construisons ensemble.</p>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+
+  <header id="site-header">
+    <h1 class="header-title">Chantraine À-Venir</h1>
+  </header>
+
+  <!-- ================= CONTENU ================= -->
+
+  <main class="page-texte rapport-synthese">
+
+    <!-- En-tête du rapport -->
+    <div class="rapport-header reveal">
+      <span class="section-tag">Document interne</span>
+      <h1>Rapport de synthèse</h1>
+      <p class="rapport-subtitle">Guide de référence pour les colistiers &middot; Municipales 2026</p>
+      <div class="rapport-meta">
+        <span class="priority-badge badge-blue">Colistiers</span>
+        <a href="livret-colistier.pdf" class="btn btn-primary btn-sm" download>
+          <span aria-hidden="true">&#x1F4E5;</span> Télécharger le PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation rapide -->
+    <nav class="rapport-nav reveal" aria-label="Navigation du rapport">
+      <h2 class="sr-only">Sommaire</h2>
+      <ol class="rapport-nav-list">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#projets">Synthèse des projets</a></li>
+        <li><a href="#equipe">Équipe & trombinoscope</a></li>
+        <li><a href="#messages">Messages-clés</a></li>
+      </ol>
+    </nav>
+
+    <!-- ===== SECTION 1 : INTRODUCTION ===== -->
+    <section id="introduction" class="rapport-section reveal">
+      <div class="rapport-section-header">
+        <span class="rapport-section-number">1</span>
+        <h2>Introduction</h2>
+      </div>
+
+      <div class="rapport-content">
+        <h3>Philosophie de la liste</h3>
+        <p>
+          <strong>Chantraine À-Venir</strong> est une liste citoyenne portée par des femmes et des hommes
+          engagés au service de la commune. Notre démarche repose sur trois piliers fondamentaux :
+        </p>
+        <ul class="rapport-list">
+          <li><strong>La proximité</strong> : être à l'écoute des habitants, présents sur le terrain, accessibles et disponibles.</li>
+          <li><strong>Le pragmatisme</strong> : proposer des actions concrètes, réalistes et mesurables, au service du quotidien.</li>
+          <li><strong>La transparence</strong> : communiquer clairement, expliquer nos décisions, rendre les comptes publics.</li>
+        </ul>
+
+        <h3>Positionnement</h3>
+        <p>
+          Notre liste se positionne comme une force de proposition constructive, ancrée dans les réalités locales.
+          Nous ne promettons pas l'impossible : nous nous engageons sur des projets concrets,
+          issus des échanges avec les Chantrainois et des constats de terrain.
+        </p>
+        <blockquote class="rapport-quote">
+          « Construire ensemble un projet utile et concret pour Chantraine et ses habitants. »
+        </blockquote>
+
+        <h3>Rôle des colistiers</h3>
+        <p>
+          En tant que colistier, vous êtes un ambassadeur de la liste sur le terrain.
+          Votre rôle est essentiel pour :
+        </p>
+        <ul class="rapport-list">
+          <li>Faire connaître notre projet auprès des habitants</li>
+          <li>Recueillir les attentes, les questions et les préoccupations</li>
+          <li>Incarner les valeurs de proximité, d'écoute et de sincérité</li>
+          <li>Relayer les informations importantes à l'équipe de campagne</li>
+        </ul>
+        <p>
+          Ce rapport est votre outil de référence pour comprendre le projet et être en mesure
+          de répondre aux questions des habitants lors de vos échanges.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2 : SYNTHESE DES PROJETS ===== -->
+    <section id="projets" class="rapport-section reveal">
+      <div class="rapport-section-header">
+        <span class="rapport-section-number">2</span>
+        <h2>Synthèse des projets</h2>
+      </div>
+
+      <div class="rapport-content">
+        <p>
+          Les projets de Chantraine À-Venir s'articulent autour de <strong>trois axes majeurs</strong>,
+          pensés pour améliorer concrètement la vie des Chantrainois.
+        </p>
+
+        <!-- Infographie globale -->
+        <figure class="rapport-figure">
+          <img src="projets-global.jpg" alt="Infographie des projets Chantraine À-Venir" class="rapport-image" data-zoom="1" loading="lazy">
+          <figcaption>Vue d'ensemble des trois axes du projet</figcaption>
+        </figure>
+
+        <!-- Axe 1 : Cadre de vie -->
+        <article class="rapport-axe">
+          <div class="rapport-axe-header">
+            <span class="priority-badge badge-green">Axe 1</span>
+            <h3>Cadre de vie & Environnement</h3>
+          </div>
+
+          <figure class="rapport-figure rapport-figure--small">
+            <img src="projet-cadre-vie.jpg" alt="Infographie Cadre de vie" class="rapport-image" data-zoom="1" loading="lazy">
+          </figure>
+
+          <div class="rapport-axe-content">
+            <p><strong>Objectifs :</strong></p>
+            <ul class="rapport-list">
+              <li>Préserver et valoriser l'environnement de proximité</li>
+              <li>Améliorer les espaces publics et leur entretien</li>
+              <li>Favoriser les déplacements doux (piétons, vélos)</li>
+              <li>Garantir un cadre de vie agréable et sécurisé</li>
+            </ul>
+
+            <p><strong>Messages simples à transmettre :</strong></p>
+            <div class="rapport-messages-box">
+              <p>« Nous voulons une commune propre, verdoyante et agréable à vivre. »</p>
+              <p>« Des espaces publics bien entretenus et des voies douces sécurisées. »</p>
+              <p>« Préserver l'environnement pour les générations futures. »</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Axe 2 : Bien vivre ensemble -->
+        <article class="rapport-axe">
+          <div class="rapport-axe-header">
+            <span class="priority-badge badge-blue">Axe 2</span>
+            <h3>Bien vivre ensemble</h3>
+          </div>
+
+          <figure class="rapport-figure rapport-figure--small">
+            <img src="projet-bienvivre.jpg" alt="Infographie Bien vivre ensemble" class="rapport-image" data-zoom="1" loading="lazy">
+          </figure>
+
+          <div class="rapport-axe-content">
+            <p><strong>Objectifs :</strong></p>
+            <ul class="rapport-list">
+              <li>Renforcer la sécurité et la tranquillité publique</li>
+              <li>Améliorer l'accès aux soins et aux services de santé</li>
+              <li>Soutenir les solidarités intergénérationnelles</li>
+              <li>Dynamiser la vie associative et culturelle</li>
+            </ul>
+
+            <p><strong>Messages simples à transmettre :</strong></p>
+            <div class="rapport-messages-box">
+              <p>« Une commune où chacun trouve sa place, quel que soit son âge. »</p>
+              <p>« Des services de santé accessibles et de proximité. »</p>
+              <p>« Renforcer les liens entre les générations et les quartiers. »</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Axe 3 : Dynamisme économique -->
+        <article class="rapport-axe">
+          <div class="rapport-axe-header">
+            <span class="priority-badge badge-orange">Axe 3</span>
+            <h3>Dynamisme économique</h3>
+          </div>
+
+          <figure class="rapport-figure rapport-figure--small">
+            <img src="projet-dynamisme.jpg" alt="Infographie Dynamisme économique" class="rapport-image" data-zoom="1" loading="lazy">
+          </figure>
+
+          <div class="rapport-axe-content">
+            <p><strong>Objectifs :</strong></p>
+            <ul class="rapport-list">
+              <li>Soutenir les commerces et artisans locaux</li>
+              <li>Accompagner les initiatives entrepreneuriales</li>
+              <li>Rendre Chantraine attractive pour les familles et les entreprises</li>
+              <li>Maîtriser le développement urbain</li>
+            </ul>
+
+            <p><strong>Messages simples à transmettre :</strong></p>
+            <div class="rapport-messages-box">
+              <p>« Soutenir nos commerces locaux, c'est préserver la vie de notre commune. »</p>
+              <p>« Une commune attractive qui accompagne les projets d'avenir. »</p>
+              <p>« Un développement maîtrisé qui respecte l'identité de Chantraine. »</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3 : ÉQUIPE ===== -->
+    <section id="equipe" class="rapport-section reveal">
+      <div class="rapport-section-header">
+        <span class="rapport-section-number">3</span>
+        <h2>Équipe & trombinoscope</h2>
+      </div>
+
+      <div class="rapport-content">
+        <p>
+          La liste <strong>Chantraine À-Venir</strong> réunit <strong>23 femmes et hommes</strong>
+          aux parcours variés et complémentaires, unis par un engagement commun au service de la commune.
+        </p>
+
+        <!-- Infographie équipe -->
+        <figure class="rapport-figure">
+          <img src="1.jpg" alt="Présentation de l'équipe Chantraine À-Venir" class="rapport-image" data-zoom="1" loading="lazy">
+          <figcaption>Présentation synthétique de l'équipe</figcaption>
+        </figure>
+
+        <h3>Diversité des profils</h3>
+        <p>Notre équipe rassemble des compétences variées :</p>
+        <ul class="rapport-list rapport-list--columns">
+          <li>Fonction publique et administration</li>
+          <li>Santé et social</li>
+          <li>Éducation et jeunesse</li>
+          <li>Commerce et entrepreneuriat</li>
+          <li>Sport et vie associative</li>
+          <li>Environnement et cadre de vie</li>
+          <li>Finance et gestion</li>
+          <li>Communication et culture</li>
+        </ul>
+
+        <h3>Une logique de complémentarité</h3>
+        <p>
+          Cette diversité est une force : elle nous permet d'aborder tous les sujets
+          avec des regards différents et des expertises complémentaires.
+          Chaque colistier apporte son expérience, ses connaissances et son engagement personnel.
+        </p>
+
+        <!-- Trombinoscope -->
+        <figure class="rapport-figure">
+          <img src="2.jpg" alt="Trombinoscope de l'équipe Chantraine À-Venir" class="rapport-image" data-zoom="1" loading="lazy">
+          <figcaption>Les 23 colistiers de Chantraine À-Venir</figcaption>
+        </figure>
+
+        <h3>La tête de liste</h3>
+        <div class="rapport-leader">
+          <img src="dany.png" alt="Jean-Daniel Boxberger" class="rapport-leader-photo">
+          <div class="rapport-leader-info">
+            <h4>Jean-Daniel Boxberger</h4>
+            <p class="rapport-leader-role">Tête de liste Chantraine À-Venir</p>
+            <blockquote>
+              « Mon objectif est de continuer à œuvrer pour Chantraine aux côtés d'une équipe
+              compétente, motivée et pleinement engagée au service de nos concitoyens. »
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4 : MESSAGES-CLÉS ===== -->
+    <section id="messages" class="rapport-section reveal">
+      <div class="rapport-section-header">
+        <span class="rapport-section-number">4</span>
+        <h2>Messages-clés pour le terrain</h2>
+      </div>
+
+      <div class="rapport-content">
+        <p>
+          Cette section vous fournit des <strong>arguments simples et des réponses types</strong>
+          pour vos échanges avec les habitants. Utilisez ces éléments comme base,
+          tout en personnalisant votre discours selon les situations.
+        </p>
+
+        <!-- Message : Présenter le projet -->
+        <article class="rapport-message-card">
+          <div class="rapport-message-header">
+            <span class="rapport-message-icon" aria-hidden="true">&#x1F4AC;</span>
+            <h3>Comment présenter le projet ?</h3>
+          </div>
+          <div class="rapport-message-content">
+            <p class="rapport-message-intro">Quand on vous demande : « C'est quoi votre projet ? »</p>
+            <div class="rapport-message-response">
+              <p>
+                « Notre projet est construit autour de trois priorités concrètes :
+                améliorer le cadre de vie, renforcer le lien social et soutenir l'économie locale.
+                Ce ne sont pas des promesses en l'air, mais des actions réalistes,
+                pensées à partir des besoins exprimés par les habitants. »
+              </p>
+            </div>
+            <p class="rapport-message-tips"><strong>Conseils :</strong> Illustrez avec un exemple concret lié au quartier ou à la situation de votre interlocuteur.</p>
+          </div>
+        </article>
+
+        <!-- Message : Présenter l'équipe -->
+        <article class="rapport-message-card">
+          <div class="rapport-message-header">
+            <span class="rapport-message-icon" aria-hidden="true">&#x1F465;</span>
+            <h3>Comment présenter l'équipe ?</h3>
+          </div>
+          <div class="rapport-message-content">
+            <p class="rapport-message-intro">Quand on vous demande : « Qui êtes-vous ? »</p>
+            <div class="rapport-message-response">
+              <p>
+                « Nous sommes 23 Chantrainois, femmes et hommes de tous horizons,
+                qui avons décidé de nous engager ensemble pour notre commune.
+                Des profils variés — santé, éducation, commerce, vie associative —
+                mais une même envie : agir concrètement pour Chantraine. »
+              </p>
+            </div>
+            <p class="rapport-message-tips"><strong>Conseils :</strong> N'hésitez pas à vous présenter personnellement et à expliquer pourquoi vous vous êtes engagé.</p>
+          </div>
+        </article>
+
+        <!-- Message : Présenter l'esprit -->
+        <article class="rapport-message-card">
+          <div class="rapport-message-header">
+            <span class="rapport-message-icon" aria-hidden="true">&#x2728;</span>
+            <h3>Comment présenter l'esprit de la liste ?</h3>
+          </div>
+          <div class="rapport-message-content">
+            <p class="rapport-message-intro">Quand on vous demande : « Qu'est-ce qui vous différencie ? »</p>
+            <div class="rapport-message-response">
+              <p>
+                « Chantraine À-Venir, c'est une démarche citoyenne et collective.
+                Nous croyons en la proximité, en la transparence et au pragmatisme.
+                Pas de grandes promesses irréalisables, mais des engagements concrets
+                et une vraie volonté d'associer les habitants aux décisions. »
+              </p>
+            </div>
+            <p class="rapport-message-tips"><strong>Conseils :</strong> Mettez en avant l'écoute et la disponibilité de l'équipe.</p>
+          </div>
+        </article>
+
+        <!-- Message : Répondre aux doutes -->
+        <article class="rapport-message-card">
+          <div class="rapport-message-header">
+            <span class="rapport-message-icon" aria-hidden="true">&#x1F914;</span>
+            <h3>Comment répondre aux doutes ?</h3>
+          </div>
+          <div class="rapport-message-content">
+            <p class="rapport-message-intro">Quand on vous dit : « Les politiques, c'est tous pareils... »</p>
+            <div class="rapport-message-response">
+              <p>
+                « Je comprends cette méfiance, et c'est justement pour ça que nous nous engageons
+                sur des projets réalistes et mesurables. Nous ne promettons pas la lune :
+                nous nous engageons sur des actions concrètes, et nous rendrons des comptes
+                régulièrement aux habitants. »
+              </p>
+            </div>
+            <p class="rapport-message-tips"><strong>Conseils :</strong> Restez à l'écoute, ne soyez pas sur la défensive, et reconnaissez que les critiques peuvent être légitimes.</p>
+          </div>
+        </article>
+
+        <!-- Valeurs à retenir -->
+        <div class="rapport-values-summary">
+          <h3>Les 4 valeurs à retenir</h3>
+          <div class="rapport-values-grid">
+            <div class="rapport-value">
+              <span class="rapport-value-icon" aria-hidden="true">&#x1F91D;</span>
+              <strong>Proximité</strong>
+              <p>À l'écoute, sur le terrain, disponibles</p>
+            </div>
+            <div class="rapport-value">
+              <span class="rapport-value-icon" aria-hidden="true">&#x1F4A1;</span>
+              <strong>Pragmatisme</strong>
+              <p>Concret, réaliste, mesurable</p>
+            </div>
+            <div class="rapport-value">
+              <span class="rapport-value-icon" aria-hidden="true">&#x1F4AC;</span>
+              <strong>Transparence</strong>
+              <p>Communication claire, comptes rendus</p>
+            </div>
+            <div class="rapport-value">
+              <span class="rapport-value-icon" aria-hidden="true">&#x2728;</span>
+              <strong>Optimisme</strong>
+              <p>Croire en l'avenir, mobiliser les énergies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Retour aux documents -->
+    <div class="rapport-footer reveal">
+      <a href="documents.html" class="btn btn-secondary">
+        <span aria-hidden="true">&#x2190;</span> Retour aux documents
+      </a>
+      <a href="livret-colistier.pdf" class="btn btn-primary" download>
+        <span aria-hidden="true">&#x1F4E5;</span> Télécharger le PDF
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <div>
+            <p class="footer-name">Chantraine À-Venir</p>
+            <p class="footer-tagline">Municipales 2026</p>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navigation pied de page">
+          <a href="index.html">Accueil</a>
+          <a href="projets.html">Projets</a>
+          <a href="equipe.html">Équipe</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="footer-legal">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <a href="documents.html">Documents utiles</a>
+          <span class="footer-sep" aria-hidden="true">&middot;</span>
+          <span>&copy; 2026 Chantraine À-Venir</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
