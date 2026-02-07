@@ -676,3 +676,26 @@
 
   });
 })();
+/* ===== Gestion anonymat questionnaire ===== */
+const anonymCheckbox = document.getElementById('anonyme-checkbox');
+const infosPerso = document.getElementById('infos-perso');
+
+if (anonymCheckbox && infosPerso) {
+  const fields = infosPerso.querySelectorAll(
+    'input:not(#anonyme-checkbox), textarea'
+  );
+
+  anonymCheckbox.addEventListener('change', () => {
+    if (anonymCheckbox.checked) {
+      infosPerso.classList.add('is-anonyme');
+      fields.forEach(field => {
+        field.disabled = true;
+        if (field.type === 'radio') field.checked = false;
+        else field.value = '';
+      });
+    } else {
+      infosPerso.classList.remove('is-anonyme');
+      fields.forEach(field => field.disabled = false);
+    }
+  });
+}
