@@ -113,7 +113,7 @@
   <!-- ================= CONTENU ================= -->
 
   <main class="page-texte questionnaire-page">
-    <div class="questionnaire-header reveal">
+    <div class="questionnaire-header">
       <span class="section-tag">Participez</span>
 
       <h1>Questionnaire participatif</h1>
@@ -134,78 +134,94 @@
       </div>
     </div>
 
-    <form id="questionnaire-form"
-          class="questionnaire-form reveal"
-          name="questionnaire"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field">
+    <form id="questionnaire-form" class="questionnaire-form" name="questionnaire" method="POST" data-netlify="true" netlify-honeypot="bot-field">
 
-      <!-- ✅ IMPORTANT : champ requis par Netlify Forms -->
-      <input type="hidden" name="form-name" value="questionnaire">
-      <!-- (optionnel) -->
-      <input type="hidden" name="subject" value="Questionnaire participatif - Chantraine À-Venir">
+      <!-- Sujet de l'email de notification -->
+      <input type="hidden" name="subject" value="Nouvelle réponse au questionnaire participatif - %{formName}" />
 
       <!-- Anti-spam honeypot -->
       <p style="display:none;">
         <label>Ne pas remplir : <input name="bot-field" /></label>
       </p>
 
-      <!-- ===== INFORMATIONS PERSONNELLES ===== -->
-      <fieldset class="q-fieldset">
-        <legend class="q-legend">Informations (facultatives)</legend>
+     <!-- ===== INFORMATIONS PERSONNELLES ===== -->
+<fieldset class="q-fieldset" id="infos-perso">
+  <legend class="q-legend">Informations (facultatives)</legend>
 
-        <div class="q-field">
-          <label for="nom" class="q-label">Nom / Prénom</label>
-          <input id="nom" name="nom_prenom" type="text" class="q-input" autocomplete="name" />
-        </div>
+  <!-- Case anonymat -->
+  <div class="q-field q-anonyme">
+    <label class="q-checkbox-anonyme">
+      <input type="checkbox" id="anonyme-checkbox" name="anonyme" value="oui">
+      <span>Je souhaite rester anonyme</span>
+    </label>
+  </div>
 
-        <div class="q-field">
-          <p class="q-label">Tranche d'âge</p>
-          <div class="q-radio-group">
-            <label class="q-radio"><input type="radio" name="tranche_age" value="-18 ans"> -18 ans</label>
-            <label class="q-radio"><input type="radio" name="tranche_age" value="18-29 ans"> 18-29 ans</label>
-            <label class="q-radio"><input type="radio" name="tranche_age" value="30-44 ans"> 30-44 ans</label>
-            <label class="q-radio"><input type="radio" name="tranche_age" value="45-59 ans"> 45-59 ans</label>
-            <label class="q-radio"><input type="radio" name="tranche_age" value="60-74 ans"> 60-74 ans</label>
-            <label class="q-radio"><input type="radio" name="tranche_age" value="75 ans et +"> 75 ans et +</label>
-          </div>
-        </div>
+  <div class="q-field">
+    <label for="nom" class="q-label">Nom / Prénom</label>
+    <input
+      id="nom"
+      name="nom_prenom"
+      type="text"
+      class="q-input"
+      autocomplete="name"
+    />
+  </div>
 
-        <div class="q-field">
-          <label for="telephone" class="q-label">Téléphone</label>
-          <input id="telephone" name="telephone" type="tel" class="q-input" autocomplete="tel" />
-        </div>
+  <div class="q-field">
+    <p class="q-label">Tranche d'âge</p>
+    <div class="q-radio-group">
+      <label class="q-radio">
+        <input type="radio" name="tranche_age" value="-18 ans"> -18 ans
+      </label>
+      <label class="q-radio">
+        <input type="radio" name="tranche_age" value="18-29 ans"> 18-29 ans
+      </label>
+      <label class="q-radio">
+        <input type="radio" name="tranche_age" value="30-44 ans"> 30-44 ans
+      </label>
+      <label class="q-radio">
+        <input type="radio" name="tranche_age" value="45-59 ans"> 45-59 ans
+      </label>
+      <label class="q-radio">
+        <input type="radio" name="tranche_age" value="60-74 ans"> 60-74 ans
+      </label>
+      <label class="q-radio">
+        <input type="radio" name="tranche_age" value="75 ans et +"> 75 ans et +
+      </label>
+    </div>
+  </div>
 
-        <div class="q-field">
-          <label for="email" class="q-label">Email</label>
-          <input id="email" name="email" type="email" class="q-input" autocomplete="email" />
-        </div>
-      </fieldset>
+  <div class="q-field">
+    <label for="telephone" class="q-label">Téléphone</label>
+    <input
+      id="telephone"
+      name="telephone"
+      type="tel"
+      class="q-input"
+      autocomplete="tel"
+    />
+  </div>
 
-      <!-- ===== SECURITE ===== -->
-      <fieldset class="q-fieldset">
-        <legend class="q-legend">La sécurité à Chantraine</legend>
-        <p class="q-question">D'une manière générale, vous sentez-vous en sécurité ?</p>
-        <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="securite_general" value="Oui"> Oui</label>
-          <label class="q-radio"><input type="radio" name="securite_general" value="Non"> Non</label>
-          <label class="q-radio"><input type="radio" name="securite_general" value="Je ne sais pas"> Je ne sais pas</label>
-        </div>
-        <div class="q-field">
-          <label for="securite_remarques" class="q-label">Vos remarques</label>
-          <textarea id="securite_remarques" name="securite_remarques" class="q-textarea" rows="3"></textarea>
-        </div>
-      </fieldset>
+  <div class="q-field">
+    <label for="email" class="q-label">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      class="q-input"
+      autocomplete="email"
+    />
+  </div>
+</fieldset>
+
 
       <!-- ===== SANTE ===== -->
       <fieldset class="q-fieldset">
         <legend class="q-legend">Santé</legend>
         <p class="q-question">Proposer l'accueil de nouveaux professionnels de santé vous apparaît comme :</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="sante_professionnels" value="Une nécessité"> Une nécessité</label>
+          <label class="q-radio"><input type="radio" name="sante_professionnels" value="Une nécessité" required> Une nécessité</label>
           <label class="q-radio"><input type="radio" name="sante_professionnels" value="Pourquoi pas"> Pourquoi pas</label>
-          <label class="q-radio"><input type="radio" name="sante_professionnels" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
         <div class="q-field">
           <label for="sante_remarques" class="q-label">Vos remarques</label>
@@ -218,7 +234,7 @@
         <legend class="q-legend">Le saviez-vous ?</legend>
         <p class="q-question">La part communale des impôts fonciers n'a pas augmenté depuis 2010.</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="impots_fonciers_info" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
@@ -233,13 +249,13 @@
         <legend class="q-legend">La jeunesse à Chantraine</legend>
         <p class="q-question">Les services et infrastructures pour notre jeunesse vous semblent-ils suffisants ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="jeunesse_services" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="jeunesse_services" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="jeunesse_services" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="jeunesse_services" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
         <div class="q-field">
           <label for="jeunesse_remarques" class="q-label">Vos remarques</label>
-          <textarea id="jeunesse_remarques" name="jeunesse_remarques" class="q-textarea" rows="3"></textarea>
+          <textarea id="jeunesse_remarques" name="jeunesse_remarques" rows="3"></textarea>
         </div>
       </fieldset>
 
@@ -248,7 +264,7 @@
         <legend class="q-legend">Actions sociales</legend>
         <p class="q-question">Le lien et les actions sociales sont-ils suffisants ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="actions_sociales" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="actions_sociales" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="actions_sociales" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="actions_sociales" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
@@ -263,9 +279,8 @@
         <legend class="q-legend">Attractivité</legend>
         <p class="q-question">Chantraine vous paraît-elle être une commune attractive ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="attractivite" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="attractivite" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="attractivite" value="Non"> Non</label>
-          <label class="q-radio"><input type="radio" name="attractivite" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
         <div class="q-field">
           <label for="attractivite_remarques" class="q-label">Vos remarques</label>
@@ -278,7 +293,7 @@
         <legend class="q-legend">Loisirs, culture et vie associative</legend>
         <p class="q-question">L'offre est-elle suffisante ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="loisirs_offre" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="loisirs_offre" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="loisirs_offre" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="loisirs_offre" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
@@ -293,7 +308,7 @@
         <legend class="q-legend">Nos événements</legend>
         <p class="q-question">En fait-on assez... ou pas ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="evenements_suffisants" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
@@ -308,7 +323,7 @@
         <legend class="q-legend">Communauté d'Agglomération d'Épinal (CAE)</legend>
         <p class="q-question">A-t-elle un impact visible sur Chantraine ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="cae_impact" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="cae_impact" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="cae_impact" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="cae_impact" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
@@ -323,7 +338,7 @@
         <legend class="q-legend">Représentation</legend>
         <p class="q-question">Notre commune est-elle suffisamment représentée à la CAE ?</p>
         <div class="q-radio-inline">
-          <label class="q-radio"><input type="radio" name="representation" value="Oui"> Oui</label>
+          <label class="q-radio"><input type="radio" name="representation" value="Oui" required> Oui</label>
           <label class="q-radio"><input type="radio" name="representation" value="Non"> Non</label>
           <label class="q-radio"><input type="radio" name="representation" value="Je ne sais pas"> Je ne sais pas</label>
         </div>
@@ -338,13 +353,13 @@
         <legend class="q-legend">Vos idées pour Chantraine !</legend>
         <p class="q-question">Projets, rêves, envies, coups de coeur... on prend tout !</p>
         <div class="q-field">
-          <textarea name="idees_pour_chantraine" class="q-textarea" rows="5"></textarea>
+          <textarea name="idees_pour_chantraine" class="q-textarea" rows="5" required></textarea>
         </div>
       </fieldset>
 
       <div class="q-submit-area">
         <button type="submit" class="btn btn-primary btn-lg" id="q-submit-btn">Soumettre mes réponses</button>
-        <p class="q-hint">Vos réponses seront enregistrées de manière confidentielle.</p>
+        <p class="q-hint">Vos réponses seront envoyées à l'équipe de Chantraine À-Venir.</p>
       </div>
     </form>
 
@@ -384,103 +399,68 @@
     </div>
   </footer>
 
-  <!-- ================= FORM SUBMISSION SCRIPT (FIXED) ================= -->
- <script>
-(function () {
-  var form = document.getElementById('questionnaire-form');
-  var submitBtn = document.getElementById('q-submit-btn');
-  var errorDiv = document.getElementById('q-error');
+  <!-- ================= FORM SUBMISSION SCRIPT ================= -->
+  <script>
+  (function() {
+    var form = document.getElementById('questionnaire-form');
+    var submitBtn = document.getElementById('q-submit-btn');
+    var errorDiv = document.getElementById('q-error');
 
-  function showError(msg){
-    errorDiv.style.display = 'block';
-    var p = errorDiv.querySelector('p');
-    if (p) p.textContent = msg || "Une erreur est survenue lors de l'envoi. Veuillez réessayer.";
-  }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      errorDiv.style.display = 'none';
 
-  async function safeText(res){
-    try { return await res.text(); } catch(e) { return ""; }
-  }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    errorDiv.style.display = 'none';
+      var formData = new FormData(form);
 
-    var formData = new FormData(form);
+      if (formData.get('bot-field')) {
+        return;
+      }
 
-    // Honeypot
-    if (formData.get('bot-field')) return;
+      // Build JSON object for the serverless function
+      var jsonData = {};
+      formData.forEach(function(value, key) {
+        if (key !== 'bot-field' && key !== 'form-name' && key !== 'subject') {
+          jsonData[key] = value;
+        }
+      });
 
-    // Au moins un champ rempli (hors meta)
-    var hasAtLeastOneAnswer = false;
-    formData.forEach(function (value, key) {
-      if (key === 'bot-field' || key === 'form-name' || key === 'subject') return;
-      if (typeof value === 'string' && value.trim() !== '') hasAtLeastOneAnswer = true;
-    });
-
-    if (!hasAtLeastOneAnswer) {
-      showError("Merci de répondre au moins à une question (ou d'ajouter une remarque).");
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours...';
-
-    // JSON pour la function (sans meta)
-    var jsonData = {};
-    formData.forEach(function (value, key) {
-      if (key === 'bot-field' || key === 'form-name' || key === 'subject') return;
-      jsonData[key] = value;
-    });
-
-    // 👉 IMPORTANT : poste Netlify Forms sur l’URL courante (plus fiable que '/')
-    var formsUrl = window.location.pathname; // ex: /questionnaire
-    if (!formsUrl || formsUrl.trim() === "") formsUrl = "/";
-
-    try {
-      // 1) Netlify Forms
-      var formsRes = await fetch(formsUrl, {
+      // 1) Submit to Netlify Forms (dashboard storage)
+      var netlifyFormsPromise = fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       });
 
-      if (!formsRes.ok) {
-        var t0 = await safeText(formsRes);
-        console.error("❌ Netlify Forms KO", formsRes.status, t0);
-        showError("Soumission Netlify Forms refusée (" + formsRes.status + "). Ouvre la console (F12) pour le détail.");
-        throw new Error("Forms KO");
-      }
-
-      // 2) Function
-      var fnRes = await fetch('/.netlify/functions/submit-questionnaire', {
+      // 2) Call the serverless function (email with Word doc)
+      var functionPromise = fetch('/.netlify/functions/submit-questionnaire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(jsonData)
       });
 
-      if (!fnRes.ok) {
-        var t1 = await safeText(fnRes);
-        console.error("❌ Function KO", fnRes.status, t1);
-        showError("Erreur function (" + fnRes.status + "). Ouvre la console (F12) pour le détail.");
-        throw new Error("Function KO");
-      }
+      // Both run in parallel; redirect if at least one succeeds
+      Promise.allSettled([netlifyFormsPromise, functionPromise])
+        .then(function(results) {
+          var formsOk = results[0].status === 'fulfilled' && results[0].value.ok;
+          var fnOk    = results[1].status === 'fulfilled' && results[1].value.ok;
 
-      // OK
-      window.location.href = '/merci';
-
-    } catch (err) {
-      // si on a déjà affiché un message plus précis, on n’écrase pas
-      if (errorDiv.style.display !== 'block') {
-        showError("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
-      }
-      console.error(err);
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Soumettre mes réponses';
-    }
-  });
-})();
-</script>
-
+          if (formsOk || fnOk) {
+            window.location.href = '/merci.html';
+          } else {
+            throw new Error('Erreur serveur');
+          }
+        })
+        .catch(function() {
+          errorDiv.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Soumettre mes réponses';
+        });
+    });
+  })();
+  </script>
 
   <!-- Disparition flèche dès qu'on scrolle -->
   <script>
