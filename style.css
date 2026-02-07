@@ -3828,3 +3828,9 @@ strong {
   flex-wrap: wrap;
   margin-top: var(--space-lg);
 }
+@media (max-width: 768px) {
+  .questionnaire-form.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
