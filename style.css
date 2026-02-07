@@ -3834,3 +3834,18 @@ strong {
     transform: none !important;
   }
 }
+/* =========================
+   Questionnaire — désactiver les animations reveal
+========================= */
+.questionnaire-page .reveal,
+.questionnaire-page .reveal-stagger > *,
+.questionnaire-page .scale-in,
+.questionnaire-page .line-reveal,
+.questionnaire-page .split-heading,
+.questionnaire-page .slide-in-left,
+.questionnaire-page .slide-in-right,
+.questionnaire-page .video-wrapper {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
