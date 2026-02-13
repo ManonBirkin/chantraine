@@ -29,9 +29,7 @@
       justify-content: center;
       padding: var(--space-lg);
     }
-    .password-gate.is-hidden {
-      display: none;
-    }
+    .password-gate.is-hidden { display: none; }
     .password-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -81,13 +79,129 @@
       font-size: 0.875rem;
       display: none;
     }
-    .password-error.is-visible {
-      display: block;
-    }
+    .password-error.is-visible { display: block; }
+
     /* Hide main content when locked */
     .page-locked .page-texte,
     .page-locked .footer {
       display: none;
+    }
+
+    /* ================= MINIATURES STYLE CANVA ================= */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    @media (min-width: 900px) {
+      .doc-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .doc-thumb-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow-lg);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .doc-thumb-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+    }
+
+    .doc-thumb-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .doc-thumb-media {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(135deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+      overflow: hidden;
+    }
+
+    .doc-thumb-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 220ms ease;
+      display: block;
+    }
+
+    .doc-thumb-card:hover .doc-thumb-media img {
+      transform: scale(1.04);
+    }
+
+    /* Overlay "Aperçu" */
+    .doc-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: var(--space-lg);
+      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+      opacity: 0;
+      transition: opacity 180ms ease;
+      pointer-events: none;
+    }
+    .doc-thumb-card:hover .doc-thumb-overlay {
+      opacity: 1;
+    }
+
+    .doc-thumb-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      color: #111827;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    .doc-thumb-meta {
+      padding: var(--space-lg);
+      display: grid;
+      gap: 8px;
+    }
+    .doc-thumb-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    .doc-thumb-sub {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .doc-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    /* Petit label format */
+    .doc-format {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
     }
   </style>
 </head>
@@ -134,7 +248,6 @@
         sessionStorage.setItem(storageKey, 'true');
       }
 
-      // Check if already authenticated in this session
       if (sessionStorage.getItem(storageKey) === 'true') {
         unlock();
       }
@@ -157,7 +270,6 @@
   </script>
 
   <!-- ================= CONTACT FACEBOOK ================= -->
-
   <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
     target="_blank" rel="noopener noreferrer"
     aria-label="Nous contacter sur Facebook">
@@ -165,7 +277,6 @@
   </a>
 
   <!-- ================= MENU LATERAL ================= -->
-
   <button id="menu-btn" class="menu-btn" type="button"
     aria-label="Ouvrir le menu"
     aria-expanded="false"
@@ -203,13 +314,11 @@
   </nav>
 
   <!-- ================= HEADER ================= -->
-
   <header id="site-header">
     <h1 class="header-title">Chantraine À-Venir</h1>
   </header>
 
   <!-- ================= CONTENU ================= -->
-
   <main class="page-texte">
 
     <h1>Documents utiles</h1>
@@ -220,76 +329,94 @@
       pour faciliter la compréhension et la diffusion de notre projet.
     </p>
 
-    <!-- ===== BLOC 1 : AFFICHE DE CAMPAGNE ===== -->
+    <!-- ===== BLOC : AFFICHE + FLYER avec miniatures ===== -->
     <section class="documents-section reveal">
       <div class="document-block">
         <div class="document-header">
           <span class="priority-badge badge-green">Grand public</span>
-          <h2>Affiche de campagne officielle</h2>
+          <h2>Visuels officiels (PDF)</h2>
           <p class="document-description">
-            L'affiche officielle de la liste Chantraine À-Venir pour les municipales 2026.
-            Téléchargeable en haute qualité pour impression (format A2/A1) ou consultation numérique.
+            Téléchargez l’affiche et le flyer officiels. Cliquez sur une miniature pour ouvrir le PDF.
           </p>
         </div>
 
-        <!-- Prévisualisation de l'affiche -->
-        <div class="poster-preview">
-          <div class="poster-frame">
-            <div class="poster-content">
-              <div class="poster-top">
-                <span class="poster-election">Municipales 2026 &middot; Chantraine (Vosges)</span>
-              </div>
+        <div class="doc-grid">
 
-              <div class="poster-hero">
-                <div class="poster-candidate">
-                  <img src="dany.png" alt="Jean-Daniel Boxberger" class="poster-candidate-photo">
-                  <p class="poster-candidate-name">Jean-Daniel Boxberger</p>
-                  <p class="poster-candidate-role">Tête de liste</p>
+          <!-- ===== AFFICHE ===== -->
+          <article class="doc-thumb-card">
+            <a class="doc-thumb-link" href="affiche-chantraine-2026.pdf" target="_blank" rel="noopener">
+              <div class="doc-thumb-media">
+                <img src="thumb-affiche-chantraine-2026.jpg"
+                     alt="Aperçu de l’affiche — Chantraine À-Venir"
+                     loading="lazy"
+                     onerror="this.style.display='none'; this.parentElement.style.padding='var(--space-xl)'; this.parentElement.innerHTML='<div style=&quot;text-align:center;color:var(--text-secondary);padding:var(--space-xl);&quot;><strong>Aperçu indisponible</strong><br>Ajoutez une miniature : <code>thumb-affiche-chantraine-2026.jpg</code></div>';">
+                <div class="doc-thumb-overlay">
+                  <span class="doc-thumb-pill">
+                    <span aria-hidden="true">&#x1F50E;</span> Aperçu
+                  </span>
                 </div>
               </div>
 
-              <div class="poster-title-section">
-                <img src="logo.png" alt="" class="poster-logo">
-                <h3 class="poster-title">Chantraine À-Venir</h3>
-                <p class="poster-slogan">Ensemble, construisons l'avenir de notre commune</p>
-              </div>
+              <div class="doc-thumb-meta">
+                <h3 class="doc-thumb-title">Affiche de campagne</h3>
+                <p class="doc-thumb-sub">PDF haute qualité (impression A2/A1)</p>
+                <div class="doc-format"><span aria-hidden="true">&#x1F4C4;</span> PDF</div>
 
-              <div class="poster-team">
-                <img src="equipe.jpg" alt="L'équipe Chantraine À-Venir" class="poster-team-photo">
-                <p class="poster-team-caption">23 femmes et hommes engagés au service de Chantraine</p>
+                <div class="doc-actions-row">
+                  <span class="btn btn-ghost" style="pointer-events:none;">Ouvrir</span>
+                </div>
               </div>
+            </a>
 
-              <div class="poster-values">
-                <span class="poster-value">Proximité</span>
-                <span class="poster-value">Pragmatisme</span>
-                <span class="poster-value">Transparence</span>
-                <span class="poster-value">Optimisme</span>
-              </div>
-
-              <div class="poster-footer">
-                <p class="poster-website">chantraine-a-venir.fr</p>
-              </div>
+            <div class="doc-actions-row" style="padding: 0 var(--space-lg) var(--space-lg);">
+              <a href="affiche-chantraine-2026.pdf" class="btn btn-primary" download>
+                <span aria-hidden="true">&#x1F4E5;</span> Télécharger
+              </a>
             </div>
-          </div>
-          <p class="poster-note">Aperçu de l'affiche</p>
+          </article>
+
+          <!-- ===== FLYER ===== -->
+          <article class="doc-thumb-card">
+            <a class="doc-thumb-link" href="flyer-chantraine-2026.pdf" target="_blank" rel="noopener">
+              <div class="doc-thumb-media">
+                <img src="thumb-flyer-chantraine-2026.jpg"
+                     alt="Aperçu du flyer — Chantraine À-Venir"
+                     loading="lazy"
+                     onerror="this.style.display='none'; this.parentElement.style.padding='var(--space-xl)'; this.parentElement.innerHTML='<div style=&quot;text-align:center;color:var(--text-secondary);padding:var(--space-xl);&quot;><strong>Aperçu indisponible</strong><br>Ajoutez une miniature : <code>thumb-flyer-chantraine-2026.jpg</code></div>';">
+                <div class="doc-thumb-overlay">
+                  <span class="doc-thumb-pill">
+                    <span aria-hidden="true">&#x1F50E;</span> Aperçu
+                  </span>
+                </div>
+              </div>
+
+              <div class="doc-thumb-meta">
+                <h3 class="doc-thumb-title">Flyer officiel</h3>
+                <p class="doc-thumb-sub">PDF (2 pages) prêt à imprimer</p>
+                <div class="doc-format"><span aria-hidden="true">&#x1F4C4;</span> PDF — 2 pages</div>
+
+                <div class="doc-actions-row">
+                  <span class="btn btn-ghost" style="pointer-events:none;">Ouvrir</span>
+                </div>
+              </div>
+            </a>
+
+            <div class="doc-actions-row" style="padding: 0 var(--space-lg) var(--space-lg);">
+              <a href="flyer-chantraine-2026.pdf" class="btn btn-primary" download>
+                <span aria-hidden="true">&#x1F4E5;</span> Télécharger
+              </a>
+            </div>
+          </article>
+
         </div>
 
-        <div class="document-actions">
-          <p class="document-unavailable">
-            <span aria-hidden="true">&#x23F3;</span>
-            Les fichiers de l'affiche sont en cours de préparation et seront disponibles prochainement.
-          </p>
-        </div>
-
-        <div class="document-specs">
-          <p><strong>Formats disponibles :</strong> PDF haute résolution, JPG</p>
-          <p><strong>Dimensions recommandées :</strong> A2 (420×594 mm) ou A1 (594×841 mm)</p>
-          <p><strong>Usage :</strong> Affichage public, diffusion numérique, impression</p>
+        <div class="document-specs" style="margin-top: var(--space-lg);">
+          <p><strong>Conseil :</strong> pour un aperçu net sur mobile, utilisez les miniatures (JPG) et ouvrez le PDF en plein écran.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===== BLOC 2 : RAPPORT DE SYNTHESE ===== -->
+    <!-- ===== BLOC : RAPPORT DE SYNTHESE ===== -->
     <section class="documents-section reveal">
       <div class="document-block">
         <div class="document-header">
@@ -301,7 +428,6 @@
           </p>
         </div>
 
-        <!-- Aperçu du contenu du rapport -->
         <div class="report-preview">
           <div class="report-toc">
             <h3 class="report-toc-title">Sommaire du rapport</h3>
@@ -337,7 +463,6 @@
             </ol>
           </div>
 
-          <!-- Extrait du rapport -->
           <div class="report-excerpt">
             <h4 class="report-excerpt-title">Extrait : Messages-clés</h4>
             <div class="key-messages">
@@ -401,7 +526,6 @@
   </main>
 
   <!-- ================= FOOTER ================= -->
-
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
