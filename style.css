@@ -2877,7 +2877,37 @@ strong {
   align-items: center;
 }
 
-/* Message document non disponible */
+/* =========================
+   GRID MINIATURES DOCUMENTS
+   → Affiche / Flyer / Profession de foi
+========================= */
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile */
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+/* Desktop → 3 documents côte à côte */
+@media (min-width: 900px) {
+  .doc-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+/* Tablette → 2 colonnes (optionnel mais propre) */
+@media (min-width: 640px) and (max-width: 899px) {
+  .doc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   Message document non disponible
+========================= */
+
 .document-unavailable {
   background: var(--orange-bg);
   color: var(--orange);
@@ -2903,6 +2933,10 @@ strong {
   gap: var(--space-xs);
 }
 
+/* =========================
+   Infos techniques document
+========================= */
+
 .document-specs {
   padding: var(--space-md);
   background: var(--bg-subtle);
@@ -2915,264 +2949,10 @@ strong {
   color: var(--text-secondary);
 }
 
-/* Poster preview */
-.poster-preview {
-  margin: var(--space-xl) 0;
-}
+/* =========================
+   Documents reminder
+========================= */
 
-.poster-frame {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  max-width: 500px;
-  margin: 0 auto;
-  box-shadow: var(--shadow-lg);
-}
-
-.poster-content {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  border-radius: var(--radius);
-  padding: var(--space-lg);
-  text-align: center;
-}
-
-.poster-top {
-  margin-bottom: var(--space-md);
-}
-
-.poster-election {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-}
-
-.poster-hero {
-  margin: var(--space-lg) 0;
-}
-
-.poster-candidate {
-  display: inline-block;
-}
-
-.poster-candidate-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--accent);
-  box-shadow: var(--shadow-md);
-  margin-bottom: var(--space-sm);
-}
-
-.poster-candidate-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0;
-}
-
-.poster-candidate-role {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.poster-title-section {
-  margin: var(--space-lg) 0;
-}
-
-.poster-logo {
-  width: 50px;
-  height: 50px;
-  margin: 0 auto var(--space-sm);
-}
-
-.poster-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin: 0 0 var(--space-xs);
-}
-
-.poster-slogan {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  font-style: italic;
-  margin: 0;
-}
-
-.poster-team {
-  margin: var(--space-lg) 0;
-}
-
-.poster-team-photo {
-  width: 100%;
-  border-radius: var(--radius);
-  margin-bottom: var(--space-xs);
-}
-
-.poster-team-caption {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.poster-values {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-xs);
-  margin: var(--space-md) 0;
-}
-
-.poster-value {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--accent-subtle);
-  color: var(--accent);
-  border-radius: var(--radius-full);
-}
-
-.poster-footer {
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--border);
-}
-
-.poster-website {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin: 0;
-}
-
-.poster-note {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: var(--space-md);
-  font-style: italic;
-}
-
-/* Report preview */
-.report-preview {
-  margin: var(--space-xl) 0;
-}
-
-.report-toc {
-  background: var(--bg-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  margin-bottom: var(--space-lg);
-}
-
-.report-toc-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: var(--space-md);
-}
-
-.report-toc-list {
-  list-style: none;
-  counter-reset: none;
-}
-
-.report-toc-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-md);
-  padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.report-toc-list li:last-child {
-  border-bottom: none;
-}
-
-.toc-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  background: var(--accent);
-  color: var(--text-on-accent);
-  border-radius: 50%;
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
-.toc-content strong {
-  display: block;
-  font-size: 0.95rem;
-  color: var(--text);
-  margin-bottom: var(--space-xs);
-}
-
-.toc-content p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-/* Report excerpt */
-.report-excerpt {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-}
-
-.report-excerpt-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-lg);
-}
-
-.key-messages {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.key-message {
-  display: flex;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  background: var(--bg-subtle);
-  border-radius: var(--radius);
-}
-
-.key-message-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.key-message strong {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--text);
-  margin-bottom: var(--space-xs);
-}
-
-.key-message p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin: 0;
-  font-style: italic;
-}
-
-/* Documents reminder */
 .documents-reminder {
   margin-top: var(--space-2xl);
 }
@@ -3181,7 +2961,11 @@ strong {
   display: flex;
   align-items: flex-start;
   gap: var(--space-lg);
-  background: linear-gradient(135deg, var(--accent-subtle) 0%, var(--highlight-subtle) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-subtle) 0%,
+    var(--highlight-subtle) 100%
+  );
   border: 1px solid var(--accent);
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
@@ -3201,12 +2985,15 @@ strong {
   margin-bottom: var(--space-md);
 }
 
+/* Mobile reminder */
 @media (max-width: 640px) {
   .reminder-card {
     flex-direction: column;
     text-align: center;
   }
 }
+
+
 
 /* =========================
    RAPPORT DE SYNTHESE PAGE
@@ -3886,4 +3673,5 @@ strong {
     color: var(--text-secondary);
     text-align: center;
   }
+
 </style>
