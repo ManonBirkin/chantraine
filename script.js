@@ -699,3 +699,27 @@ if (anonymCheckbox && infosPerso) {
     }
   });
 }
+(function initVideoCarousels(){
+  const carousels = document.querySelectorAll('[data-video-carousel]');
+  if (!carousels.length) return;
+
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector('[data-vc-track]');
+    const prev = carousel.querySelector('[data-vc-prev]');
+    const next = carousel.querySelector('[data-vc-next]');
+    if (!track || !prev || !next) return;
+
+    const step = () => {
+      const card = track.querySelector('.vc-card');
+      if (!card) return 280;
+      const gap = parseFloat(getComputedStyle(track).gap || '12') || 12;
+      return card.getBoundingClientRect().width + gap;
+    };
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+
+    const vids = track.querySelectorAll('video');
+    vids.forEach(v => v.addEventListener('play', () => vids.forEach(o => { if (o !== v) o.pause(); })));
+  });
+})();
