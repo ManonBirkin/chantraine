@@ -3988,3 +3988,11 @@ strong {
   .vc-btn{ width:36px; height:36px; font-size:22px; }
   .vc-card{ flex-basis: 78vw; }
 }
+/* Infographie globale — très petite */
+.infographic--small {
+  width: 30%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+}
