@@ -3996,3 +3996,23 @@ strong {
   display: block;
   margin: 2rem auto;
 }
+.team-synthese {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.team-synthese-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.projet-methode {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.projet-methode-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
