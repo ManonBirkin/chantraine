@@ -1,70 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Chantraine À-Venir | Municipales 2026</title>
 
   <!-- Typographies modernes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="logo.png" />
 
   <script defer src="script.js"></script>
 
-  <meta name="description" content="Chantraine À-Venir : liste citoyenne pour les municipales 2026. Découvrez nos projets, notre équipe et participez à construire l'avenir de notre commune." />
+  <meta
+    name="description"
+    content="Chantraine À-Venir : liste citoyenne pour les municipales 2026. Découvrez nos projets, notre équipe et participez à construire l'avenir de notre commune."
+  />
 </head>
 
-<body>
-
+<body class="nv-theme-sun">
   <!-- ================= CONTACT FACEBOOK ================= -->
-
-  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
-    target="_blank" rel="noopener noreferrer"
-    aria-label="Nous contacter sur Facebook">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  <a
+    href="https://www.facebook.com/profile.php?id=61576816498498"
+    class="fb-contact-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Nous contacter sur Facebook"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+      />
+    </svg>
   </a>
 
   <!-- ================= MENU LATERAL ================= -->
-
-  <button id="menu-btn" class="menu-btn" type="button"
+  <button
+    id="menu-btn"
+    class="menu-btn"
+    type="button"
     aria-label="Ouvrir le menu"
     aria-expanded="false"
-    aria-controls="side-menu">
+    aria-controls="side-menu"
+  >
     <span class="menu-icon" aria-hidden="true"></span>
   </button>
 
   <div id="menu-overlay" class="menu-overlay" hidden></div>
 
-  <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
+  <nav
+    id="side-menu"
+    class="side-menu"
+    aria-label="Navigation principale"
+    aria-hidden="true"
+  >
     <div class="side-menu-header">
       <div class="side-menu-brand">
-        <img src="logo.png" alt="" class="side-menu-logo">
+        <img src="logo.png" alt="" class="side-menu-logo" />
         <div class="side-menu-brandtext">
           <p class="brand-title">Chantraine À-Venir</p>
           <p class="brand-subtitle">Municipales 2026</p>
         </div>
       </div>
-      <button id="menu-close" class="side-menu-close" type="button" aria-label="Fermer le menu">&#10005;</button>
+      <button
+        id="menu-close"
+        class="side-menu-close"
+        type="button"
+        aria-label="Fermer le menu"
+      >
+        &#10005;
+      </button>
     </div>
 
     <ul class="side-menu-links">
-      <li><a href="index.html" class="is-active"><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a></li>
-      <li><a href="projets.html"><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a></li>
-      <li><a href="equipe.html"><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a></li>
-      <li><a href="contact.html"><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a></li>
       <li>
-  <a href="informations-prefecture.html">
-    <span class="mi" aria-hidden="true">🏛️</span>
-    Informations officielles – Préfecture des Vosges
-  </a>
-</li>
-      <li><a href="mentions-legales.html"><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a></li>
+        <a href="index.html" class="is-active"
+          ><span class="mi" aria-hidden="true">&#x1F3E0;</span> Accueil</a
+        >
+      </li>
+      <li>
+        <a href="projets.html"
+          ><span class="mi" aria-hidden="true">&#x1F9ED;</span> Nos projets</a
+        >
+      </li>
+      <li>
+        <a href="equipe.html"
+          ><span class="mi" aria-hidden="true">&#x1F465;</span> Notre équipe</a
+        >
+      </li>
+      <li>
+        <a href="contact.html"
+          ><span class="mi" aria-hidden="true">&#x2709;</span> Contact</a
+        >
+      </li>
+      <li>
+        <a href="informations-prefecture.html">
+          <span class="mi" aria-hidden="true">🏛️</span>
+          Informations officielles – Préfecture des Vosges
+        </a>
+      </li>
+      <li>
+        <a href="mentions-legales.html"
+          ><span class="mi" aria-hidden="true">&#x2139;</span> Mentions légales</a
+        >
+      </li>
     </ul>
 
     <div class="side-menu-cta">
@@ -75,44 +122,50 @@
   </nav>
 
   <!-- ================= HERO DUO SECTION (Présentation + Message) ================= -->
-
   <section id="accueil" class="hero-duo">
     <!-- Colonne 1 : Présentation du site -->
     <div class="hero-duo-col hero-duo-presentation">
       <div class="hero-duo-content">
         <span class="hero-tag">Municipales 2026 &middot; Chantraine (Vosges)</span>
-        <h1 class="hero-title">Chantraine<br><span class="hero-accent">À-Venir</span> <span class="hero-note">
-    Ce site est le fruit d'un long travail bénévole. Tous droits réservés.
-  </span></h1>
+
+        <h1 class="hero-title">
+          Chantraine<br />
+          <span class="hero-accent">À-Venir</span>
+          <span class="hero-note">
+            Ce site est le fruit d'un long travail bénévole. Tous droits réservés.
+          </span>
+        </h1>
+
         <p class="hero-subtitle">
           Une liste citoyenne pour construire <strong>ensemble</strong> l'avenir de notre commune.
         </p>
+
         <div class="hero-actions">
           <a href="projets.html" class="btn btn-primary">Découvrir nos projets</a>
           <a href="equipe.html" class="btn btn-secondary">Rencontrer l'équipe</a>
         </div>
       </div>
-    <div class="hero-top">
 
-  <!-- PHOTO D'EQUIPE EN PREMIER -->
-  <div class="hero-team-photo-wrapper">
-    <img
-      src="equipe.jpg"
-      alt="Photo de l'équipe Chantraine À-Venir réunie"
-      class="hero-team-photo"
-      loading="eager"
-    >
-  </div>
+      <div class="hero-top">
+        <!-- PHOTO D'EQUIPE EN PREMIER -->
+        <div class="hero-team-photo-wrapper">
+          <img
+            src="equipe.jpg"
+            alt="Photo de l'équipe Chantraine À-Venir réunie"
+            class="hero-team-photo"
+            loading="eager"
+          />
+        </div>
 
-  <!-- GRENOUILLE EN BAS -->
-  <div class="hero-visual">
-    <img
-      src="accueil-grenouille.gif"
-      alt="Logo animé Chantraine À-Venir"
-      class="hero-logo"
-      loading="eager"
-    >
-  </div>
+        <!-- GRENOUILLE EN BAS -->
+        <div class="hero-visual">
+          <img
+            src="accueil-grenouille.gif"
+            alt="Logo animé Chantraine À-Venir"
+            class="hero-logo"
+            loading="eager"
+          />
+        </div>
       </div>
     </div>
 
@@ -120,21 +173,37 @@
     <div class="hero-duo-col hero-duo-message">
       <div class="message-card-compact">
         <div class="message-photo">
-          <img src="dany.png" alt="Jean-Daniel Boxberger, tête de liste Chantraine À-Venir" class="message-photo-img" loading="eager">
+          <img
+            src="dany.png"
+            alt="Jean-Daniel Boxberger, tête de liste Chantraine À-Venir"
+            class="message-photo-img"
+            loading="eager"
+          />
         </div>
+
         <div class="message-content">
           <span class="section-tag">Message aux Chantrainoises et Chantrainois</span>
           <h2 class="message-title">Construisons ensemble l'avenir de notre commune</h2>
+
           <blockquote class="message-text">
-            <!-- CORRECTION GENRE -->
             <p>Chères Chantrainoises, chers Chantrainois,</p>
-            <p>C'est avec conviction et enthousiasme que je vous présente notre projet pour la commune. Avec l'équipe Chantraine À-Venir, nous souhaitons bâtir ensemble un avenir où chaque voix compte, où la proximité et la transparence guident nos actions.</p>
-            <p>Vos idées et votre participation sont essentielles. Rejoignez-nous dans cette belle aventure citoyenne.</p>
+            <p>
+              C'est avec conviction et enthousiasme que je vous présente notre projet
+              pour la commune. Avec l'équipe Chantraine À-Venir, nous souhaitons bâtir
+              ensemble un avenir où chaque voix compte, où la proximité et la transparence
+              guident nos actions.
+            </p>
+            <p>
+              Vos idées et votre participation sont essentielles. Rejoignez-nous dans
+              cette belle aventure citoyenne.
+            </p>
           </blockquote>
+
           <div class="message-signature">
             <p class="message-name">Jean-Daniel Boxberger</p>
             <p class="message-role">Tête de liste Chantraine À-Venir</p>
           </div>
+
           <a href="questionnaire.html" class="btn btn-primary">Questionnaire participatif</a>
         </div>
       </div>
@@ -142,163 +211,132 @@
   </section>
 
   <!-- ================= MAIN CONTENT ================= -->
-
   <main id="main-content">
-
-  <!-- Section Vidéo -->
-  <section class="section section-video">
-    <div class="container">
-
-      <!-- En-tête -->
-      <div class="section-header reveal">
-        <span class="section-tag">Présentation</span>
-        <h2 class="section-title">Découvrez notre projet en vidéo</h2>
-      </div>
-
-      <!-- Vidéo principale -->
-      <div class="video-wrapper reveal">
-        <iframe
-               src="https://www.youtube.com/embed/0STJhXFhHlE"
-               title="Vidéo de présentation du projet Chantraine à venir"
-               loading="lazy"
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-               allowfullscreen
-               style="width:100%;height:100%;border:0;"
-             ></iframe>
-      </div>
-
-      <!-- Galerie de mini-vidéos -->
-      <div class="video-gallery reveal">
-
-        <div class="video-gallery-header">
-          <h3 class="video-gallery-title">Nos vidéos thématiques</h3>
-          <p class="video-gallery-lead">
-            Des engagements concrets, pensés pour le quotidien des Chantrainoises et Chantrainois.
-          </p>
+    <!-- Section Vidéo -->
+    <section class="section section-video">
+      <div class="container">
+        <!-- En-tête -->
+        <div class="section-header reveal">
+          <span class="section-tag">Présentation</span>
+          <h2 class="section-title">Découvrez notre projet en vidéo</h2>
         </div>
 
-        <div class="video-gallery-grid">
+        <!-- Vidéo principale -->
+        <div class="video-wrapper reveal">
+          <iframe
+            src="https://www.youtube.com/embed/0STJhXFhHlE"
+            title="Vidéo de présentation du projet Chantraine à venir"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="width: 100%; height: 100%; border: 0;"
+          ></iframe>
+        </div>
 
-          <!-- Vidéo ÉQUIPE (active) -->
-          <article class="video-card">
-            <div class="video-card-media">
-              <iframe
-                     src="https://www.youtube.com/embed/6pjAnDsJxHE"
-                     title="Présentation de l'équipe Chantraine à venir"
-                     loading="lazy"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                     allowfullscreen
-                     style="width:100%;height:100%;border:0;"
-                   ></iframe>
-            </div>
-            <div class="video-card-body">
-              <span class="video-card-badge badge-blue">Équipe</span>
-              <h4 class="video-card-title">Présentation de l'équipe</h4>
-            </div>
-          </article>
+        <!-- Galerie de mini-vidéos -->
+        <div class="video-gallery reveal">
+          <div class="video-gallery-header">
+            <h3 class="video-gallery-title">Nos vidéos thématiques</h3>
+            <p class="video-gallery-lead">
+              Des engagements concrets, pensés pour le quotidien des Chantrainoises et Chantrainois.
+            </p>
+          </div>
 
-          <!-- Sport & Jeunesse -->
-<article class="video-card">
-  <div class="video-card-media">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/rJgSASCsFSE"
-        title="Sport & Jeunesse - Chantraine à Venir"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-  <div class="video-card-body">
-    <span class="video-card-badge badge-green">Sport & Jeunesse</span>
-    <h4 class="video-card-title">Favoriser l’épanouissement des jeunes</h4>
-  </div>
-</article>
-
-          <!-- Sécurité (À venir) -->
-          <article class="video-card video-card--coming-soon" aria-disabled="true">
-            <div class="video-card-media">
-              <div class="video-card-placeholder">
-                <span class="video-card-placeholder-icon" aria-hidden="true">🎬</span>
-                <span class="video-card-placeholder-text">À venir</span>
-                <!-- Fichier prévu : chantraine-securite (YouTube à venir) -->
+          <div class="video-gallery-grid">
+            <!-- Vidéo ÉQUIPE (active) -->
+            <article class="video-card">
+              <div class="video-card-media">
+                <iframe
+                  src="https://www.youtube.com/embed/6pjAnDsJxHE"
+                  title="Présentation de l'équipe Chantraine à venir"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style="width: 100%; height: 100%; border: 0;"
+                ></iframe>
               </div>
-            </div>
-            <div class="video-card-body">
-              <span class="video-card-badge badge-orange">Sécurité</span>
-              <h4 class="video-card-title">Renforcer la tranquillité publique</h4>
-            </div>
-          </article>
-
-          <!-- Forêt -->
-<article class="video-card">
-  
-  <div class="video-card-media">
-    <iframe
-      class="video-card-video"
-      src="https://www.youtube.com/embed/vMHQxWDTZ2k"
-      title="Préserver et valoriser notre patrimoine naturel"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      style="width:100%;height:100%;border:0;"
-    ></iframe>
-  </div>
-
-  <div class="video-card-body">
-    <span class="video-card-badge badge-green">Forêt</span>
-    <h4 class="video-card-title">
-      Préserver et valoriser notre patrimoine naturel
-    </h4>
-  </div>
-
-</article>
-<!-- Centre-bourg -->
-<article class="video-card">
-
-  <div class="video-card-media">
-    <iframe
-      class="video-card-video"
-      src="https://www.youtube.com/embed/0NBjuKF5x4E"
-      title="Redynamiser et valoriser le cœur de Chantraine"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      style="width:100%;height:100%;border:0;"
-    ></iframe>
-  </div>
-
-  <div class="video-card-body">
-    <span class="video-card-badge badge-blue">Centre-bourg</span>
-    <h4 class="video-card-title">
-      Redynamiser et valoriser le cœur de Chantraine
-    </h4>
-  </div>
-
-</article>
-
-          <!-- Démocratie participative (À venir) -->
-          <article class="video-card video-card--coming-soon" aria-disabled="true">
-            <div class="video-card-media">
-              <div class="video-card-placeholder">
-                <span class="video-card-placeholder-icon" aria-hidden="true">🎬</span>
-                <span class="video-card-placeholder-text">À venir</span>
-                <!-- Fichier prévu : chantraine-democratie-participative (YouTube à venir) -->
+              <div class="video-card-body">
+                <span class="video-card-badge badge-blue">Équipe</span>
+                <h4 class="video-card-title">Présentation de l'équipe</h4>
               </div>
-            </div>
-            <div class="video-card-body">
-              <span class="video-card-badge badge-blue">Démocratie participative</span>
-              <h4 class="video-card-title">Associer les habitantes et habitants aux décisions</h4>
-            </div>
-          </article>
+            </article>
 
+            <!-- Sport & Jeunesse -->
+            <article class="video-card">
+              <div class="video-card-media">
+                <iframe
+                  src="https://www.youtube.com/embed/rJgSASCsFSE"
+                  title="Sport & Jeunesse - Chantraine à Venir"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style="width: 100%; height: 100%; border: 0;"
+                ></iframe>
+              </div>
+
+              <div class="video-card-body">
+                <span class="video-card-badge badge-green">Sport & Jeunesse</span>
+                <h4 class="video-card-title">Favoriser l’épanouissement des jeunes</h4>
+              </div>
+            </article>
+
+            <!-- Sécurité (À venir) -->
+            <article class="video-card video-card--coming-soon" aria-disabled="true">
+              <div class="video-card-media">
+                <div class="video-card-placeholder">
+                  <span class="video-card-placeholder-icon" aria-hidden="true">🎬</span>
+                  <span class="video-card-placeholder-text">À venir</span>
+                </div>
+              </div>
+              <div class="video-card-body">
+                <span class="video-card-badge badge-orange">Sécurité</span>
+                <h4 class="video-card-title">Renforcer la tranquillité publique</h4>
+              </div>
+            </article>
+
+            <!-- Forêt -->
+            <article class="video-card">
+              <div class="video-card-media">
+                <iframe
+                  class="video-card-video"
+                  src="https://www.youtube.com/embed/vMHQxWDTZ2k"
+                  title="Préserver et valoriser notre patrimoine naturel"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style="width: 100%; height: 100%; border: 0;"
+                ></iframe>
+              </div>
+
+              <div class="video-card-body">
+                <span class="video-card-badge badge-green">Forêt</span>
+                <h4 class="video-card-title">Préserver et valoriser notre patrimoine naturel</h4>
+              </div>
+            </article>
+
+            <!-- Démocratie participative -->
+            <article class="video-card" id="video-democratie">
+              <div class="video-card-media">
+                <iframe
+                  class="video-card-video"
+                  src="https://www.youtube.com/embed/S89rmeoCzvk?enablejsapi=1"
+                  title="Démocratie participative à Chantraine"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style="width: 100%; height: 100%; border: 0;"
+                ></iframe>
+              </div>
+
+              <div class="video-card-body">
+                <span class="video-card-badge badge-blue">Démocratie participative</span>
+                <h4 class="video-card-title">Construire Chantraine avec les habitants</h4>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-
-    </div>
-  </section>
+    </section>
 
     <!-- Section Équipe -->
     <section class="section section-team">
@@ -313,7 +351,12 @@
         </div>
 
         <div class="team-preview reveal">
-          <img src="equipe.jpg" alt="Photo de l'équipe Chantraine À-Venir" class="team-photo" loading="lazy">
+          <img
+            src="equipe.jpg"
+            alt="Photo de l'équipe Chantraine À-Venir"
+            class="team-photo"
+            loading="lazy"
+          />
           <div class="team-overlay">
             <p class="team-quote">"Construire ensemble un projet utile et concret"</p>
           </div>
@@ -406,12 +449,12 @@
           <span class="section-tag">Engagement</span>
           <h2 class="section-title">Un engagement concret au service de Chantraine</h2>
           <p class="section-lead">
-            Des actions menées ces dernières années, en lien avec les habitantes et habitants, les associations et les acteurs locaux.
+            Des actions menées ces dernières années, en lien avec les habitantes et habitants,
+            les associations et les acteurs locaux.
           </p>
         </div>
 
         <div class="engagement-grid reveal-stagger">
-
           <!-- Santé & accès aux soins -->
           <article class="engagement-card">
             <div class="engagement-icon" aria-hidden="true">&#x1F3E5;</div>
@@ -419,11 +462,23 @@
             <ul class="engagement-list">
               <li>
                 <span class="engagement-item-text">Maison de santé du parc de l'Arsenal</span>
-                <a href="https://c.vosgesmatin.fr/sante/2022/11/05/chantraine-une-maison-de-sante-va-s-installer-au-parc-de-l-arsenal" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/sante/2022/11/05/chantraine-une-maison-de-sante-va-s-installer-au-parc-de-l-arsenal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
               <li>
                 <span class="engagement-item-text">Cafés de Candide : santé communautaire et jeunes soignants</span>
-                <a href="https://c.vosgesmatin.fr/sante/2024/03/19/un-premier-cafe-de-candide-pour-renforcer-la-sante-communautaire" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/sante/2024/03/19/un-premier-cafe-de-candide-pour-renforcer-la-sante-communautaire"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
             </ul>
           </article>
@@ -435,15 +490,33 @@
             <ul class="engagement-list">
               <li>
                 <span class="engagement-item-text">Équipements numériques à l'école Robert-Desnos</span>
-                <a href="https://c.vosgesmatin.fr/education/2022/11/03/l-ecole-primaire-robert-desnos-s-equipe-d-ordinateurs" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/education/2022/11/03/l-ecole-primaire-robert-desnos-s-equipe-d-ordinateurs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
               <li>
                 <span class="engagement-item-text">Partenariat municipalité – parents d'élèves</span>
-                <a href="https://c.vosgesmatin.fr/education/2022/12/09/un-partenariat-efficace-entre-municipalite-et-parents-d-eleves" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/education/2022/12/09/un-partenariat-efficace-entre-municipalite-et-parents-d-eleves"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
               <li>
                 <span class="engagement-item-text">Actions éducatives et traditions locales</span>
-                <a href="https://c.vosgesmatin.fr/education/2022/07/15/une-tradition-toujours-tres-appreciee-et-utile" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/education/2022/07/15/une-tradition-toujours-tres-appreciee-et-utile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
             </ul>
           </article>
@@ -455,14 +528,26 @@
             <ul class="engagement-list">
               <li>
                 <span class="engagement-item-text">Étang de Chantraine : patrimoine et usages</span>
-                <a href="https://c.vosgesmatin.fr/edition-d-epinal/2017/06/30/nous-voulons-rendre-a-l-etang-sa-vocation-premiere" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/edition-d-epinal/2017/06/30/nous-voulons-rendre-a-l-etang-sa-vocation-premiere"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
               <li>
                 <span class="engagement-item-text">Troc de plantes à l'étang</span>
               </li>
               <li>
                 <span class="engagement-item-text">Écoquartier de l'Arsenal</span>
-                <a href="https://c.vosgesmatin.fr/edition-d-epinal/2018/05/25/l-ecoquartier-de-chantraine-ou-comment-meler-habitat-mixte-et-espaces-verts" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/edition-d-epinal/2018/05/25/l-ecoquartier-de-chantraine-ou-comment-meler-habitat-mixte-et-espaces-verts"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
             </ul>
           </article>
@@ -474,14 +559,16 @@
             <ul class="engagement-list">
               <li>
                 <span class="engagement-item-text">Loto solidaire au profit d'enfants malades</span>
-                <a href="https://c.vosgesmatin.fr/societe/2025/10/27/un-loto-solidaire-au-profit-d-enfants-malades" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/societe/2025/10/27/un-loto-solidaire-au-profit-d-enfants-malades"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
-              <li>
-                <span class="engagement-item-text">Animations intergénérationnelles</span>
-              </li>
-              <li>
-                <span class="engagement-item-text">Comité de jumelage Ranaventure</span>
-              </li>
+              <li><span class="engagement-item-text">Animations intergénérationnelles</span></li>
+              <li><span class="engagement-item-text">Comité de jumelage Ranaventure</span></li>
             </ul>
           </article>
 
@@ -492,18 +579,22 @@
             <ul class="engagement-list">
               <li>
                 <span class="engagement-item-text">Commémoration du 75e anniversaire de la Libération</span>
-                <a href="https://c.vosgesmatin.fr/edition-d-epinal/2019/09/27/le-75e-anniversaire-de-la-liberation-de-la-commune-celebre" target="_blank" rel="noopener noreferrer" class="engagement-source" aria-label="Lire l'article Vosges Matin">Vosges Matin</a>
+                <a
+                  href="https://c.vosgesmatin.fr/edition-d-epinal/2019/09/27/le-75e-anniversaire-de-la-liberation-de-la-commune-celebre"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="engagement-source"
+                  aria-label="Lire l'article Vosges Matin"
+                >Vosges Matin</a>
               </li>
-              <li>
-                <span class="engagement-item-text">Causeries de Candide : histoire de la commune</span>
-              </li>
+              <li><span class="engagement-item-text">Causeries de Candide : histoire de la commune</span></li>
             </ul>
           </article>
-
         </div>
 
         <p class="engagement-note reveal">
-          Ces actions ont été portées ou accompagnées par des élues et élus engagés, des associations locales et des habitantes et habitants de Chantraine, dont Jean-Daniel Boxberger, aujourd'hui tête de liste.
+          Ces actions ont été portées ou accompagnées par des élues et élus engagés, des associations locales et des
+          habitantes et habitants de Chantraine, dont Jean-Daniel Boxberger, aujourd'hui tête de liste.
         </p>
       </div>
     </section>
@@ -524,22 +615,33 @@
           <div class="value-card">
             <div class="value-icon" aria-hidden="true">&#x1F91D;</div>
             <h3 class="value-title">Proximité</h3>
-            <p class="value-text">À l'écoute des habitantes et habitants, présents sur le terrain, accessibles et disponibles.</p>
+            <p class="value-text">
+              À l'écoute des habitantes et habitants, présents sur le terrain, accessibles et disponibles.
+            </p>
           </div>
+
           <div class="value-card">
             <div class="value-icon" aria-hidden="true">&#x1F4A1;</div>
             <h3 class="value-title">Pragmatisme</h3>
-            <p class="value-text">Des actions concrètes, réalistes et mesurables au service du quotidien.</p>
+            <p class="value-text">
+              Des actions concrètes, réalistes et mesurables au service du quotidien.
+            </p>
           </div>
+
           <div class="value-card">
             <div class="value-icon" aria-hidden="true">&#x1F4AC;</div>
             <h3 class="value-title">Transparence</h3>
-            <p class="value-text">Une communication claire, des décisions expliquées, un budget ouvert.</p>
+            <p class="value-text">
+              Une communication claire, des décisions expliquées, un budget ouvert.
+            </p>
           </div>
+
           <div class="value-card">
             <div class="value-icon" aria-hidden="true">&#x2728;</div>
             <h3 class="value-title">Optimisme</h3>
-            <p class="value-text">Croire en l'avenir de Chantraine et mobiliser les énergies positives.</p>
+            <p class="value-text">
+              Croire en l'avenir de Chantraine et mobiliser les énergies positives.
+            </p>
           </div>
         </div>
       </div>
@@ -553,9 +655,9 @@
             <span class="section-tag">Participez</span>
             <h2 class="contact-title">Vos idées comptent</h2>
             <p class="contact-text">
-              Une question, une suggestion, une envie de vous impliquer ?
-              Contactez-nous, nous sommes à votre écoute.
+              Une question, une suggestion, une envie de vous impliquer ? Contactez-nous, nous sommes à votre écoute.
             </p>
+
             <div class="contact-actions">
               <a href="mailto:contact@chantraine-a-venir.fr" class="btn btn-primary">
                 <span aria-hidden="true">&#x2709;</span> Nous écrire
@@ -563,22 +665,21 @@
               <a href="contact.html" class="btn btn-ghost">Plus d'infos</a>
             </div>
           </div>
+
           <div class="contact-visual" aria-hidden="true">
-            <img src="grenoumail.png" alt="" class="contact-illustration-img" loading="lazy">
+            <img src="grenoumail.png" alt="" class="contact-illustration-img" loading="lazy" />
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- ================= FOOTER ================= -->
-
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true" />
           <div>
             <p class="footer-name">Chantraine À-Venir</p>
             <p class="footer-tagline">Municipales 2026</p>
@@ -603,5 +704,36 @@
     </div>
   </footer>
 
+  <!-- ================= POPUP NOUVELLE VIDEO (miniature) ================= -->
+  <div id="newvideo-popup" class="nv-popup" aria-hidden="true" hidden>
+    <div class="nv-card">
+      <button class="nv-close" type="button" aria-label="Fermer" data-nv-close>×</button>
+
+      <div class="nv-content">
+        <p class="nv-kicker">🎬 Nouvelle vidéo en ligne</p>
+        <p class="nv-title">Démocratie participative</p>
+
+        <!-- clic = ouvre la vidéo en grand -->
+        <button class="nv-thumb" type="button" data-open-video>
+          <img
+            src="https://i.ytimg.com/vi/S89rmeoCzvk/hqdefault.jpg"
+            alt="Miniature : Démocratie participative"
+            loading="lazy"
+          />
+          <span class="nv-playbadge" aria-hidden="true">▶</span>
+        </button>
+
+        <p class="nv-note">Clique sur la miniature pour agrandir.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODALE VIDEO GRAND FORMAT ================= -->
+  <div id="video-modal" class="vm-overlay" aria-hidden="true" hidden>
+    <div class="vm-dialog" role="dialog" aria-modal="true" aria-label="Lecture vidéo">
+      <button class="vm-close" type="button" aria-label="Fermer la vidéo" data-close-video>×</button>
+      <div class="vm-frame" id="video-modal-frame"></div>
+    </div>
+  </div>
 </body>
 </html>
