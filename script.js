@@ -651,6 +651,7 @@
     (function initNewVideoPopup() {
       const VIDEO_ID = "S89rmeoCzvk";
       const POPUP_DURATION_MS = 9000; // ajuste ici (ex: 12000)
+      const STORAGE_KEY = "nv_newvideo_seen_v1";
 
       const popup = document.getElementById("newvideo-popup");
       const modal = document.getElementById("video-modal");
@@ -741,16 +742,14 @@
       });
 
       // Affichage au chargement (une seule fois si déjà vu)
-      window.addEventListener("load", () => {
-        // évite double exécution si script chargé 2 fois
-        if (window.__nv_popup_shown__) return;
-        window.__nv_popup_shown__ = true;
+      // évite double exécution si script chargé 2 fois
+      if (window.__nv_popup_shown__) return;
+      window.__nv_popup_shown__ = true;
 
-        let seen = false;
-        try { seen = localStorage.getItem(STORAGE_KEY) === "1"; } catch (e) {}
+      let seen = false;
+      try { seen = localStorage.getItem(STORAGE_KEY) === "1"; } catch (e) {}
 
-        if (!seen) showPopup();
-      });
+      if (!seen) showPopup();
     })();
 
   }); // fin ready

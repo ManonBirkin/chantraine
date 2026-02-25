@@ -4578,3 +4578,100 @@ strong {
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.14);
 }
+/* Garantit une hauteur identique à une vidéo (16:9) même quand il n'y a pas d'iframe */
+.video-card-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px; /* adapte à ton style */
+}
+
+/* Remplit bien toute la zone */
+.video-card-media iframe,
+.video-card-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* ou 3 si tu veux */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* ===== POPUP blanc style Apple ===== */
+
+.nv-card{
+  background: rgba(255,255,255,0.96) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--text);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+}
+
+.nv-card::before,
+.nv-card::after{
+  display:none;
+}
+/* ===== bouton fermer visible ===== */
+
+.nv-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+
+  width:44px;
+  height:44px;
+  border-radius:12px;
+
+  background:#ffffff;
+  color:#111;
+  font-size:22px;
+  font-weight:700;
+
+  border:1px solid rgba(0,0,0,0.15);
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.nv-close:hover{
+  background:#f5f5f5;
+  transform:scale(1.05);
+}
+/* ===== bouton play visible ===== */
+
+.nv-playbadge{
+  position:absolute;
+  inset:auto;
+  left:16px;
+  bottom:16px;
+
+  width:56px;
+  height:56px;
+  border-radius:16px;
+
+  background:rgba(0,0,0,0.85);
+  color:white;
+  font-size:24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  backdrop-filter:blur(6px);
+}
+
+.nv-thumb:hover .nv-playbadge{
+  transform:scale(1.1);
+}
+.nv-card{
+  border: 2px solid #2563eb;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.15),
+    0 0 0 4px rgba(255,193,7,0.15); /* halo soleil */
+}
