@@ -1,5 +1,20 @@
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["private_docs/**"]
+
+[[redirects]]
+  from = "/colistiers/*"
+  to = "/.netlify/functions/colistiers"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/documents.html"
+  to = "/colistiers/documents.html"
+  status = 301
+  force = true
