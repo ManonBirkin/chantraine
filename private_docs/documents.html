@@ -17,71 +17,7 @@
 
   <script defer src="script.js"></script>
 
-  <style>
-    /* Password gate styles */
-    .password-gate {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-lg);
-    }
-    .password-gate.is-hidden { display: none; }
-    .password-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-xl);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      box-shadow: var(--shadow-lg);
-    }
-    .password-card-logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto var(--space-lg);
-    }
-    .password-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-sm);
-    }
-    .password-card p {
-      color: var(--text-secondary);
-      margin-bottom: var(--space-lg);
-    }
-    .password-form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-    .password-input {
-      width: 100%;
-      padding: var(--space-md);
-      font-family: inherit;
-      font-size: 1rem;
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius);
-      background: var(--bg);
-      color: var(--text);
-      text-align: center;
-    }
-    .password-input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: var(--shadow-glow);
-    }
-    .password-error {
-      color: #ef4444;
-      font-size: 0.875rem;
-      display: none;
-    }
-    .password-error.is-visible { display: block; }
-
-    /* Hide main content when locked */
+  <style>/* Hide main content when locked */
     .page-locked .page-texte,
     .page-locked .footer {
       display: none;
@@ -206,68 +142,7 @@
   </style>
 </head>
 
-<body class="page-locked">
-
-  <!-- ================= PASSWORD GATE ================= -->
-  <div id="password-gate" class="password-gate">
-    <div class="password-card">
-      <img src="logo.png" alt="Chantraine À-Venir" class="password-card-logo">
-      <h2>Espace colistiers</h2>
-      <p>Cette section est réservée aux colistiers.<br>Veuillez entrer le mot de passe pour accéder aux documents.</p>
-      <form id="password-form" class="password-form">
-        <input
-          type="password"
-          id="password-input"
-          class="password-input"
-          placeholder="Mot de passe"
-          autocomplete="off"
-          required
-        >
-        <p id="password-error" class="password-error">Mot de passe incorrect</p>
-        <button type="submit" class="btn btn-primary">Accéder aux documents</button>
-      </form>
-      <p style="margin-top: var(--space-lg); margin-bottom: 0; font-size: 0.875rem;">
-        <a href="index.html">Retour à l'accueil</a>
-      </p>
-    </div>
-  </div>
-
-  <script>
-    (function() {
-      var correctPassword = 'grenouille26';
-      var storageKey = 'cav-docs-auth';
-
-      var gate = document.getElementById('password-gate');
-      var form = document.getElementById('password-form');
-      var input = document.getElementById('password-input');
-      var error = document.getElementById('password-error');
-
-      function unlock() {
-        document.body.classList.remove('page-locked');
-        gate.classList.add('is-hidden');
-        sessionStorage.setItem(storageKey, 'true');
-      }
-
-      if (sessionStorage.getItem(storageKey) === 'true') {
-        unlock();
-      }
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (input.value === correctPassword) {
-          unlock();
-        } else {
-          error.classList.add('is-visible');
-          input.value = '';
-          input.focus();
-        }
-      });
-
-      input.addEventListener('input', function() {
-        error.classList.remove('is-visible');
-      });
-    })();
-  </script>
+<body>
 
   <!-- ================= CONTACT FACEBOOK ================= -->
   <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
