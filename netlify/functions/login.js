@@ -50,13 +50,13 @@ exports.handler = async (event) => {
   }
 
   const now = Math.floor(Date.now() / 1000);
-  const exp = now + 60 * 60 * 12; // 12h
+  const exp = now + 10; // 10s // 12h
 
   const payload = Buffer.from(JSON.stringify({ iat: now, exp })).toString("base64url");
   const sig = sign(payload, SECRET);
   const token = `${payload}.${sig}`;
 
-  const cookie = `cav_auth=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${60 * 60 * 12}`;
+  const cookie = `cav_auth=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=10`;
 
   return json(200, { ok: true }, { "Set-Cookie": cookie });
 };
