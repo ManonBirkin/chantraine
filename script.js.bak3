@@ -808,7 +808,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.target = "_blank";
     btn.rel = "noopener noreferrer";
     btn.className = "yt-open-btn";
-    btn.textContent = isAndroid ? "YouTube (Android)" : "YouTube";
+    btn.textContent = isAndroid ? "App YouTube" : "YouTube";
     btn.setAttribute(
       "aria-label",
       isAndroid ? "Ouvrir la vidéo dans l’application YouTube" : "Ouvrir la vidéo sur YouTube"

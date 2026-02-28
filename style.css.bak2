@@ -4691,35 +4691,3 @@ strong {
 .yt-open-btn:hover{
   text-decoration:underline;
 }
-
-/* ===== Bouton YouTube discret (overlay bas-droite) ===== */
-.yt-embed-wrap { position: relative; }
-
-.yt-open-btn{
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 3;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 12px;
-  line-height: 1;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  text-decoration: none;
-
-  border: 1px solid rgba(255,255,255,.35);
-  background: rgba(0,0,0,.35);
-  backdrop-filter: blur(6px);
-}
-
-.yt-open-btn:hover{ text-decoration: underline; }
-
-/* Sur Android, on peut le rendre encore + explicite si tu veux */
-.is-android .yt-open-btn{
-  /* rien d'obligatoire : tu peux garder identique */
-}

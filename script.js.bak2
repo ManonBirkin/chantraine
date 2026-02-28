@@ -776,44 +776,34 @@ if (anonymCheckbox && infosPerso) {
     }
   });
 }
-
 /* =====================================================
-   FIX YOUTUBE MOBILE — bouton discret en bas à droite
-   - Android : libellé "App YouTube"
-   - Autres : libellé "YouTube"
+   FIX MOBILE YOUTUBE — ouvre la vidéo dans l'app
+   Ajoute automatiquement un bouton sous chaque iframe
 ===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-  const isAndroid = /Android/i.test(navigator.userAgent || "");
-  document.documentElement.classList.toggle("is-android", isAndroid);
 
-  document.querySelectorAll('iframe[src*="youtube.com/embed"]').forEach((iframe) => {
-    const src = iframe.getAttribute("src") || "";
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll('iframe[src*="youtube.com/embed"]').forEach(iframe => {
+
+    const src = iframe.getAttribute("src");
     const match = src.match(/embed\/([a-zA-Z0-9_-]+)/);
+
     if (!match) return;
 
     const videoId = match[1];
     const watchUrl = `https://youtu.be/${videoId}`;
 
-    const container = iframe.parentElement;
-    if (!container) return;
-
-    // évite les doublons
-    if (container.querySelector(".yt-open-btn")) return;
-
-    // s'assure que le conteneur peut accueillir un bouton en overlay
-    container.classList.add("yt-embed-wrap");
+    // évite doublons
+    if (iframe.parentElement.querySelector(".yt-open-btn")) return;
 
     const btn = document.createElement("a");
     btn.href = watchUrl;
     btn.target = "_blank";
-    btn.rel = "noopener noreferrer";
+    btn.rel = "noopener";
     btn.className = "yt-open-btn";
-    btn.textContent = isAndroid ? "YouTube (Android)" : "YouTube";
-    btn.setAttribute(
-      "aria-label",
-      isAndroid ? "Ouvrir la vidéo dans l’application YouTube" : "Ouvrir la vidéo sur YouTube"
-    );
+    btn.textContent = "▶ Ouvrir dans YouTube";
 
-    container.appendChild(btn);
+    iframe.insertAdjacentElement("afterend", btn);
   });
+
 });
