@@ -228,6 +228,22 @@ strong {
   padding: var(--space-3xl) 0;
 }
 
+/* Mention copyright en bas des sections (forcé pour éviter les conflits) */
+main .section .container > .section-copyright-note {
+  display: block !important;
+  width: 100% !important;
+  margin: 1.15rem auto 0 !important;
+  max-width: 72ch !important;
+  text-align: center !important;
+  font-size: 0.56rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  color: var(--text-primary) !important;
+  opacity: 0.82 !important;
+}
+
 .section-header {
   text-align: center;
   max-width: 700px;
@@ -3708,19 +3724,4 @@ strong {
 
 .hero-logo {
   width: 120px;
-}
-
-/* Mention en bas des sections principales */
-.section-copyright-note {
-  display: block;
-  width: 100%;
-  margin: 1.15rem auto 0;
-  max-width: 72ch;
-  text-align: center;
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  opacity: 0.85;
 }
