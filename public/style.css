@@ -1041,7 +1041,19 @@ strong {
   color: var(--text-muted);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-sm);
+}
+
+.footer-legal::after {
+  content: "© ManonBirkin pour chantraine-a-venir.fr";
+  flex-basis: 100%;
+  margin-top: 0.2rem;
+  text-align: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
 .footer-legal a {
@@ -3672,7 +3684,7 @@ strong {
   border-radius: 12px;
 }.hero-note {
   display: block;
-  font-size: 0.5rem;
+  font-size: 0.62rem;
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin-top: 10px;
@@ -3698,3 +3710,16 @@ strong {
   width: 120px;
 }
 
+/* Mention en bas des sections principales */
+#main-content > .section::after,
+.page-texte > section::after {
+  content: "Ce site est le fruit d'un long travail bénévole. Tous droits réservés. (© ManonBirkin pour chantraine-a-venir.fr)";
+  display: block;
+  margin-top: 1.1rem;
+  text-align: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
