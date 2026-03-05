@@ -40,6 +40,52 @@
       revealElements.forEach((el) => el.classList.add("is-visible"));
     }
 
+    const electionCountdown = document.getElementById("election-countdown");
+    if (electionCountdown) {
+      const targetDate = new Date(2026, 2, 15);
+      targetDate.setHours(0, 0, 0, 0);
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const diffDays = Math.round((targetDate.getTime() - today.getTime()) / 86400000);
+
+      if (diffDays > 1) {
+        electionCountdown.textContent = `J-${diffDays} avant le vote du 15 mars 2026`;
+      } else if (diffDays === 1) {
+        electionCountdown.textContent = "Demain : vote du 15 mars 2026";
+      } else if (diffDays === 0) {
+        electionCountdown.textContent = "Aujourd'hui : vote du 15 mars 2026";
+      } else {
+        electionCountdown.textContent = `Le vote du 15 mars 2026 est passé (J+${Math.abs(diffDays)})`;
+      }
+    }
+
+    const introOverlay = document.getElementById("intro-overlay");
+    const introEnter = document.getElementById("intro-enter");
+    if (introOverlay && introEnter) {
+      document.body.classList.add("is-intro-open");
+
+      const closeIntro = () => {
+        if (introOverlay.hidden) return;
+        introOverlay.setAttribute("aria-hidden", "true");
+        introOverlay.hidden = true;
+        introOverlay.style.display = "none";
+        document.body.classList.remove("is-intro-open");
+      };
+
+      introEnter.addEventListener("click", (event) => {
+        event.preventDefault();
+        closeIntro();
+      });
+      introOverlay.addEventListener("click", (event) => {
+        if (event.target === introOverlay) closeIntro();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeIntro();
+      });
+    }
+
     const rotatingContainers = document.querySelectorAll(".rotating-words");
     rotatingContainers.forEach((container) => {
       const words = container.querySelectorAll(".word");

@@ -29,6 +29,27 @@
 </head>
 
 <body class="nv-theme-sun">
+  <div id="intro-overlay" class="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+    <div class="intro-card">
+      <p class="intro-kicker">Municipales 2026</p>
+      <h1 id="intro-title" class="intro-title">Chantraine À-Venir</h1>
+      <img
+        src="assets/img/accueil-grenouille.gif"
+        alt=""
+        class="intro-logo"
+        aria-hidden="true"
+      />
+      <p class="intro-lead">Une liste citoyenne pour construire l'avenir de notre commune.</p>
+      <p class="intro-event">
+        📣 Réunion publique salle Grandemange<br />
+        le vendredi 13 mars à 20h
+      </p>
+      <div class="intro-actions">
+        <button id="intro-enter" class="btn btn-primary" type="button">Entrer sur le site</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ================= CONTACT FACEBOOK ================= -->
   <a
     href="https://www.facebook.com/profile.php?id=61587515131360"
@@ -134,16 +155,18 @@
 
         <h1 class="hero-title">
           Chantraine<br />
-          <span class="hero-accent">À-Venir</span>
-          <span class="hero-note">
-            Ce site est le fruit d'un long travail bénévole. Tous droits réservés.<br />
-            (&copy; ManonBirkin pour chantraine-a-venir.fr)
+          <span class="hero-title-line">
+            <span class="hero-accent">À-Venir</span>
+            <img
+              src="assets/img/logo-256.webp"
+              width="256"
+              height="256"
+              alt=""
+              class="hero-title-logo-inline"
+              aria-hidden="true"
+            />
           </span>
         </h1>
-
-        <p class="hero-subtitle">
-          Une liste citoyenne pour construire <strong>ensemble</strong> l'avenir de notre commune.
-        </p>
 
         <div class="hero-actions">
           <a href="projets.html" class="btn btn-primary">Découvrir nos projets</a>
@@ -165,29 +188,20 @@
             loading="eager"
             fetchpriority="high"
           />
+          <p class="hero-team-photo-note">
+            Ce site est le fruit d'un long travail bénévole. Tous droits réservés.<br />
+            (&copy; ManonBirkin pour chantraine-a-venir.fr)
+          </p>
         </div>
 
-        <!-- GRENOUILLE EN BAS -->
-        <div class="hero-visual">
-          <video
-            class="hero-logo hero-logo-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            poster="assets/img/accueil-grenouille-poster-360.webp"
-            aria-label="Logo animé Chantraine À-Venir"
-          >
-            <source src="assets/video/accueil-grenouille.webm" type="video/webm" />
-            <source src="assets/video/accueil-grenouille.mp4" type="video/mp4" />
-          </video>
-        </div>
       </div>
     </div>
 
     <!-- Colonne 2 : Message -->
     <div class="hero-duo-col hero-duo-message">
+      <p id="election-countdown" class="message-countdown message-countdown-top" aria-live="polite">
+        Décompte en cours...
+      </p>
       <div class="message-card-compact">
         <div class="message-photo">
           <img
