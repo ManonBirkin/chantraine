@@ -72,6 +72,7 @@
         introOverlay.hidden = true;
         introOverlay.style.display = "none";
         document.body.classList.remove("is-intro-open");
+        document.dispatchEvent(new Event("intro-closed"));
       };
 
       introEnter.addEventListener("click", (event) => {
@@ -84,6 +85,43 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeIntro();
       });
+    }
+
+    const heroCarousel = document.querySelector(".hero-photo-carousel");
+    if (heroCarousel) {
+      const slides = Array.from(heroCarousel.querySelectorAll(".hero-photo-slide"));
+      const dots = Array.from(heroCarousel.querySelectorAll(".hero-photo-dot"));
+      const autoMs = Number(heroCarousel.getAttribute("data-auto-ms") || 4200);
+      let current = 0;
+      let autoStarted = false;
+
+      const setActiveSlide = (nextIndex) => {
+        const safeIndex = (nextIndex + slides.length) % slides.length;
+        slides.forEach((slide, index) => slide.classList.toggle("is-active", index === safeIndex));
+        dots.forEach((dot, index) => dot.classList.toggle("is-active", index === safeIndex));
+        current = safeIndex;
+      };
+
+      const startAutoCarousel = () => {
+        if (autoStarted || slides.length <= 1) return;
+        autoStarted = true;
+
+        const firstHoldMs = autoMs * 2;
+        window.setTimeout(() => {
+          setActiveSlide(current + 1);
+          window.setInterval(() => setActiveSlide(current + 1), autoMs);
+        }, firstHoldMs);
+      };
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => setActiveSlide(index));
+      });
+
+      if (introOverlay && !introOverlay.hidden) {
+        document.addEventListener("intro-closed", startAutoCarousel, { once: true });
+      } else {
+        startAutoCarousel();
+      }
     }
 
     const rotatingContainers = document.querySelectorAll(".rotating-words");
