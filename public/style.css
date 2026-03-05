@@ -3711,16 +3711,15 @@ strong {
 }
 
 /* Mention en bas des sections principales */
-.section::after,
-.page-texte > section::after {
-  content: "Ce site est le fruit d'un long travail bénévole. Tous droits réservés. (© ManonBirkin pour chantraine-a-venir.fr)";
+.section-copyright-note {
   display: block;
-  margin: 1.1rem auto 0;
+  margin: 1.35rem auto 0;
   max-width: 72ch;
   text-align: center;
-  font-size: 0.68rem;
-  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--text-secondary);
-  opacity: 0.9;
+  color: var(--text-primary);
+  opacity: 0.95;
 }
