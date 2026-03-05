@@ -13,15 +13,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style-rich-media.css">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <script defer src="script.js"></script>
+  <script defer src="script-rich-media.js"></script>
 </head>
 
+<body>
 
   <!-- ================= CONTACT FACEBOOK ================= -->
 
-  <a href="https://www.facebook.com/profile.php?id=61576816498498" class="fb-contact-btn"
+  <a href="https://www.facebook.com/profile.php?id=61587515131360" class="fb-contact-btn"
     target="_blank" rel="noopener noreferrer"
     aria-label="Nous contacter sur Facebook">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -41,7 +44,7 @@
   <nav id="side-menu" class="side-menu" aria-label="Navigation principale" aria-hidden="true">
     <div class="side-menu-header">
       <div class="side-menu-brand">
-        <img src="logo.png" alt="" class="side-menu-logo">
+        <img src="assets/img/logo-256.webp" width="256" height="256" alt="" class="side-menu-logo">
         <div>
           <p class="brand-title">Chantraine À-Venir</p>
           <p class="brand-subtitle">Municipales 2026</p>
@@ -118,8 +121,9 @@
   <div class="vc-media">
     <div class="video-wrapper">
       <iframe 
-        src="https://www.youtube.com/embed/rJgSASCsFSE"
+        src="https://www.youtube.com/embed/3toHL175wg8"
         title="Sport & Jeunesse - Chantraine à Venir"
+        loading="lazy"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
@@ -189,9 +193,13 @@
 <section class="projet-methode reveal">
   <div class="projet-methode-wrapper">
     <img
-      src="methode_projet.jpg"
+      src="assets/img/methode-projet-960.webp"
+      srcset="assets/img/methode-projet-640.webp 640w, assets/img/methode-projet-960.webp 960w"
+      sizes="(max-width: 768px) 92vw, 960px"
       alt="Méthode de construction des projets Chantraine À-Venir"
       class="projet-methode-image"
+      width="1056"
+      height="908"
       loading="lazy"
       data-zoom="1"
     >
@@ -207,9 +215,13 @@
         <h2>Environnement</h2>
 
         <img
-          src="projet-cadre-vie.jpg"
+          src="assets/img/projet-cadre-vie-900.webp"
+          srcset="assets/img/projet-cadre-vie-600.webp 600w, assets/img/projet-cadre-vie-900.webp 900w, assets/img/projet-cadre-vie-1200.webp 1200w"
+          sizes="(max-width: 768px) 92vw, (max-width: 1200px) 45vw, 360px"
           alt="Infographie – Amélioration du cadre de vie à Chantraine"
           class="mini-infographie"
+          width="3712"
+          height="5250"
           data-zoom="1"
           loading="lazy"
         >
@@ -227,9 +239,13 @@
         <h2>Bien vivre ensemble</h2>
 
         <img
-          src="projet-bienvivre.jpg"
+          src="assets/img/projet-bienvivre-900.webp"
+          srcset="assets/img/projet-bienvivre-600.webp 600w, assets/img/projet-bienvivre-900.webp 900w, assets/img/projet-bienvivre-1200.webp 1200w"
+          sizes="(max-width: 768px) 92vw, (max-width: 1200px) 45vw, 360px"
           alt="Infographie – Bien vivre ensemble à Chantraine"
           class="mini-infographie"
+          width="3535"
+          height="5000"
           data-zoom="1"
           loading="lazy"
         >
@@ -247,9 +263,13 @@
         <h2>Dynamisme économique</h2>
 
         <img
-          src="projet-dynamisme.jpg"
+          src="assets/img/projet-dynamisme-900.webp"
+          srcset="assets/img/projet-dynamisme-600.webp 600w, assets/img/projet-dynamisme-900.webp 900w, assets/img/projet-dynamisme-1200.webp 1200w"
+          sizes="(max-width: 768px) 92vw, (max-width: 1200px) 45vw, 360px"
           alt="Infographie – Dynamisme économique à Chantraine"
           class="mini-infographie"
+          width="3889"
+          height="5500"
           data-zoom="1"
           loading="lazy"
         >
@@ -271,7 +291,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true">
+          <img src="assets/img/logo-256.webp" width="256" height="256" alt="" class="footer-logo" aria-hidden="true">
           <div>
             <p class="footer-name">Chantraine À-Venir</p>
             <p class="footer-tagline">Municipales 2026</p>

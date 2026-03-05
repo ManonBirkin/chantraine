@@ -1,104 +1,21 @@
 /* =====================================================
-   SCRIPT GLOBAL — Chantraine À-Venir
-   - Menu latéral glissant
-   - Lightbox images (zoom)
-   - Gestion du scroll (iOS friendly)
-   - Animations de scroll (reveal)
-   - Mots rotatifs
-   - Popup “nouvelle vidéo” + modale vidéo grand écran (simple)
+   SCRIPT RICH MEDIA — Chantraine À-Venir
+   - Lightbox images (zoom/pan)
+   - Carrousels vidéo
+   - Popup nouvelle vidéo + modale
+   - Bouton d'ouverture YouTube mobile
 ===================================================== */
 
 (function () {
   "use strict";
 
-  /* =========================
-     UTIL
-  ========================= */
   function ready(fn) {
     if (document.readyState !== "loading") fn();
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
   ready(() => {
-
-    /* =====================================================
-       SCROLL REVEAL ANIMATIONS (Intersection Observer)
-    ===================================================== */
-    const revealElements = document.querySelectorAll(
-      ".reveal, .reveal-stagger, .line-reveal, .split-heading, .scale-in, .slide-in-left, .slide-in-right, .video-wrapper"
-    );
-
-    if (revealElements.length > 0 && "IntersectionObserver" in window) {
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.15,
-          rootMargin: "0px 0px -50px 0px",
-        }
-      );
-
-      revealElements.forEach((el) => revealObserver.observe(el));
-    } else {
-      revealElements.forEach((el) => el.classList.add("is-visible"));
-    }
-
-    /* =====================================================
-       ROTATING WORDS ANIMATION
-    ===================================================== */
-    const rotatingContainers = document.querySelectorAll(".rotating-words");
-
-    rotatingContainers.forEach((container) => {
-      const words = container.querySelectorAll(".word");
-      if (words.length === 0) return;
-
-      let currentIndex = 0;
-      words[0].classList.add("is-active");
-
-      setInterval(() => {
-        const current = words[currentIndex];
-        const nextIndex = (currentIndex + 1) % words.length;
-        const next = words[nextIndex];
-
-        current.classList.remove("is-active");
-        current.classList.add("is-exiting");
-
-        setTimeout(() => {
-          current.classList.remove("is-exiting");
-        }, 500);
-
-        next.classList.add("is-active");
-        currentIndex = nextIndex;
-      }, 2500);
-    });
-
-    /* =====================================================
-       SPLIT HEADING ANIMATION SETUP
-    ===================================================== */
-    document.querySelectorAll(".split-heading").forEach((heading) => {
-      if (heading.querySelector(".word")) return;
-
-      const text = heading.textContent;
-      const words = text.split(" ").filter((w) => w.length > 0);
-      heading.innerHTML = words.map((word) => `<span class="word">${word}</span>`).join(" ");
-    });
-
-    /* =====================================================
-       MENU LATERAL + LOCK SCROLL (utilisé ailleurs)
-    ===================================================== */
-    const menuBtn = document.getElementById("menu-btn");
-    const menu = document.getElementById("side-menu");
-    const overlay = document.getElementById("menu-overlay");
-    const menuClose = document.getElementById("menu-close");
-
     let savedScrollY = 0;
-    let menuOpen = false;
 
     function lockScroll() {
       savedScrollY = window.scrollY || document.documentElement.scrollTop;
@@ -118,65 +35,14 @@
       window.scrollTo(0, savedScrollY);
     }
 
-    function openMenu() {
-      if (!menu || !overlay) return;
-      menu.classList.add("is-open");
-      menu.setAttribute("aria-hidden", "false");
-      menuBtn?.setAttribute("aria-expanded", "true");
-      overlay.hidden = false;
-      lockScroll();
-      menuOpen = true;
-    }
-
-    function closeMenu() {
-      if (!menu || !overlay) return;
-      menu.classList.remove("is-open");
-      menu.setAttribute("aria-hidden", "true");
-      menuBtn?.setAttribute("aria-expanded", "false");
-      overlay.hidden = true;
-      unlockScroll();
-      menuOpen = false;
-    }
-
-    menuBtn?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      menuOpen ? closeMenu() : openMenu();
-    });
-
-    menuClose?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      closeMenu();
-    });
-
-    overlay?.addEventListener("click", closeMenu);
-
-    menu?.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (link) closeMenu();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && menuOpen) closeMenu();
-    });
-
-    /* =====================================================
-       LIGHTBOX PRO — Gallery + Zoom/Pan ultra fluide
-       Sélecte automatiquement les images [data-zoom="1"]
-       ⚠️ IMPORTANT: ne plus "return" si aucune image,
-       sinon tout le reste du script ne s’exécute pas.
-    ===================================================== */
-
-    // Nettoyage ancien lightbox si présent
     const oldLightbox = document.getElementById("lightbox");
     if (oldLightbox) oldLightbox.remove();
     const oldLightboxPro = document.getElementById("lightbox-pro");
     if (oldLightboxPro) oldLightboxPro.remove();
 
-    // Collecter toutes les images avec data-zoom="1"
     const galleryImages = Array.from(document.querySelectorAll('img[data-zoom="1"]'));
 
     if (galleryImages.length > 0) {
-      // Création du DOM lightbox
       const lb = document.createElement("div");
       lb.id = "lightbox-pro";
       lb.setAttribute("role", "dialog");
@@ -214,7 +80,6 @@
       `;
       document.body.appendChild(lb);
 
-      // DOM
       const lbViewport = lb.querySelector(".lightbox-pro-viewport");
       const lbImg = lb.querySelector(".lightbox-pro-img");
       const lbClose = lb.querySelector(".lightbox-pro-close");
@@ -226,32 +91,27 @@
       const lbZoomLevel = lb.querySelector(".lightbox-pro-zoom-level");
       const lbZoomBtns = lb.querySelectorAll(".lightbox-pro-zoom-btn");
 
-      // État
       let isOpen = false;
       let currentIndex = 0;
       let lastFocused = null;
 
-      // Zoom/Pan state
       let scale = 1;
       let translateX = 0;
       let translateY = 0;
       const MIN_SCALE = 1;
       const MAX_SCALE = 3;
 
-      // Pan state
       let isPanning = false;
       let panStartX = 0;
       let panStartY = 0;
       let startTranslateX = 0;
       let startTranslateY = 0;
 
-      // Swipe state (mobile navigation at scale=1)
       let swipeStartX = 0;
       let swipeStartY = 0;
       let swipeDeltaX = 0;
       let isSwipe = false;
 
-      // Double-tap detection
       let lastTapTime = 0;
 
       function updateTransform(animate = true) {
@@ -326,7 +186,7 @@
 
         const img = galleryImages[index];
         lbImg.classList.add("is-entering");
-        lbImg.src = img.src;
+        lbImg.src = img.currentSrc || img.src;
         lbImg.alt = img.alt || "Image agrandie";
 
         setTimeout(() => lbImg.classList.remove("is-entering"), 200);
@@ -365,7 +225,6 @@
         }
       }
 
-      // Ouverture sur clic image
       galleryImages.forEach((img, idx) => {
         img.style.cursor = "zoom-in";
         img.addEventListener("click", (e) => {
@@ -602,19 +461,14 @@
               e.preventDefault();
               last.focus();
             }
-          } else {
-            if (document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
+          } else if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
           }
         }
       });
-    } // fin if galleryImages.length > 0
+    }
 
-    /* =====================================================
-       VIDEO CAROUSEL
-    ===================================================== */
     (function initVideoCarousels() {
       const carousels = document.querySelectorAll("[data-video-carousel]");
       if (!carousels.length) return;
@@ -637,30 +491,28 @@
 
         const vids = track.querySelectorAll("video");
         vids.forEach((v) =>
-          v.addEventListener("play", () => vids.forEach((o) => { if (o !== v) o.pause(); }))
+          v.addEventListener("play", () => {
+            vids.forEach((o) => {
+              if (o !== v) o.pause();
+            });
+          })
         );
       });
     })();
 
-    /* =====================================================
-       POPUP “NOUVELLE VIDEO” (auto-disparition) + MODALE VIDEO GRAND FORMAT
-       - Affiche le popup au chargement
-       - Disparaît si pas de clic
-       - Si clic sur la miniature => ouvre la vidéo en grand (autoplay)
-    ===================================================== */
     (function initNewVideoPopup() {
-      const VIDEO_ID = "S89rmeoCzvk";
-      const POPUP_DURATION_MS = 9000; // ajuste ici (ex: 12000)
+      const VIDEO_ID = "3toHL175wg8";
+      const POPUP_DURATION_MS = 9000;
       const STORAGE_KEY = "nv_newvideo_seen_v1";
 
       const popup = document.getElementById("newvideo-popup");
       const modal = document.getElementById("video-modal");
       const modalFrame = document.getElementById("video-modal-frame");
 
-      if (!popup) return; // si pas sur la page, on ne fait rien
+      if (!popup) return;
 
       const btnClosePopup = popup.querySelector("[data-nv-close]");
-      const btnOpenVideo = popup.querySelector("[data-open-video]"); // IMPORTANT: data-open-video
+      const btnOpenVideo = popup.querySelector("[data-open-video]");
       const btnCloseVideo = modal ? modal.querySelector("[data-close-video]") : null;
 
       let timer = null;
@@ -677,9 +529,15 @@
 
         popup.classList.remove("is-open");
         popup.setAttribute("aria-hidden", "true");
-        setTimeout(() => { popup.hidden = true; }, 250);
+        setTimeout(() => {
+          popup.hidden = true;
+        }, 250);
 
-        try { localStorage.setItem(STORAGE_KEY, "1"); } catch (e) {}
+        try {
+          localStorage.setItem(STORAGE_KEY, "1");
+        } catch (_err) {
+          // noop
+        }
       }
 
       function openVideoModal() {
@@ -690,7 +548,6 @@
         modal.hidden = false;
         modal.setAttribute("aria-hidden", "false");
 
-        // Injecte l'iframe seulement au clic => autoplay
         modalFrame.innerHTML = `
           <iframe
             src="https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0"
@@ -700,7 +557,6 @@
           ></iframe>
         `;
 
-        // (Optionnel) bloquer le scroll pendant la modale
         lockScroll();
       }
 
@@ -709,24 +565,19 @@
 
         modal.hidden = true;
         modal.setAttribute("aria-hidden", "true");
-        modalFrame.innerHTML = ""; // stop vidéo
-
-        // (Optionnel) rendre le scroll
+        modalFrame.innerHTML = "";
         unlockScroll();
       }
 
-      // Events popup
-      btnClosePopup && btnClosePopup.addEventListener("click", hidePopup);
-      btnOpenVideo && btnOpenVideo.addEventListener("click", openVideoModal);
+      btnClosePopup?.addEventListener("click", hidePopup);
+      btnOpenVideo?.addEventListener("click", openVideoModal);
 
-      // Close popup si clic sur le fond (si tu as un overlay cliquable)
       popup.addEventListener("click", (e) => {
         if (e.target === popup) hidePopup();
       });
 
-      // Events modale
       if (modal) {
-        btnCloseVideo && btnCloseVideo.addEventListener("click", closeVideoModal);
+        btnCloseVideo?.addEventListener("click", closeVideoModal);
         modal.addEventListener("click", (e) => {
           if (e.target === modal) closeVideoModal();
         });
@@ -734,86 +585,53 @@
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
-          // si modale ouverte => fermer
           if (modal && !modal.hidden) closeVideoModal();
-          // si popup ouvert => fermer
           if (!popup.hidden) hidePopup();
         }
       });
 
-      // Affichage au chargement (une seule fois si déjà vu)
-      // évite double exécution si script chargé 2 fois
       if (window.__nv_popup_shown__) return;
       window.__nv_popup_shown__ = true;
 
       let seen = false;
-      try { seen = localStorage.getItem(STORAGE_KEY) === "1"; } catch (e) {}
+      try {
+        seen = localStorage.getItem(STORAGE_KEY) === "1";
+      } catch (_err) {
+        seen = false;
+      }
 
       if (!seen) showPopup();
     })();
 
-  }); // fin ready
-})(); // fin IIFE
+    const isAndroid = /Android/i.test(navigator.userAgent || "");
+    document.documentElement.classList.toggle("is-android", isAndroid);
 
-/* ===== Gestion anonymat questionnaire ===== */
-const anonymCheckbox = document.getElementById("anonyme-checkbox");
-const infosPerso = document.getElementById("infos-perso");
+    document.querySelectorAll('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]').forEach((iframe) => {
+      const src = iframe.getAttribute("src") || "";
+      const match = src.match(/embed\/([a-zA-Z0-9_-]+)/);
+      if (!match) return;
 
-if (anonymCheckbox && infosPerso) {
-  const fields = infosPerso.querySelectorAll("input:not(#anonyme-checkbox), textarea");
+      const videoId = match[1];
+      const watchUrl = `https://youtu.be/${videoId}`;
+      const container = iframe.parentElement;
+      if (!container) return;
 
-  anonymCheckbox.addEventListener("change", () => {
-    if (anonymCheckbox.checked) {
-      infosPerso.classList.add("is-anonyme");
-      fields.forEach((field) => {
-        field.disabled = true;
-        if (field.type === "radio") field.checked = false;
-        else field.value = "";
-      });
-    } else {
-      infosPerso.classList.remove("is-anonyme");
-      fields.forEach((field) => (field.disabled = false));
-    }
+      if (container.querySelector(".yt-open-btn")) return;
+
+      container.classList.add("yt-embed-wrap");
+
+      const btn = document.createElement("a");
+      btn.href = watchUrl;
+      btn.target = "_blank";
+      btn.rel = "noopener noreferrer";
+      btn.className = "yt-open-btn";
+      btn.textContent = isAndroid ? "YouTube (Android)" : "YouTube";
+      btn.setAttribute(
+        "aria-label",
+        isAndroid ? "Ouvrir la vidéo dans l’application YouTube" : "Ouvrir la vidéo sur YouTube"
+      );
+
+      container.appendChild(btn);
+    });
   });
-}
-
-/* =====================================================
-   FIX YOUTUBE MOBILE — bouton discret en bas à droite
-   - Android : libellé "App YouTube"
-   - Autres : libellé "YouTube"
-===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-  const isAndroid = /Android/i.test(navigator.userAgent || "");
-  document.documentElement.classList.toggle("is-android", isAndroid);
-
-  document.querySelectorAll('iframe[src*="youtube.com/embed"]').forEach((iframe) => {
-    const src = iframe.getAttribute("src") || "";
-    const match = src.match(/embed\/([a-zA-Z0-9_-]+)/);
-    if (!match) return;
-
-    const videoId = match[1];
-    const watchUrl = `https://youtu.be/${videoId}`;
-
-    const container = iframe.parentElement;
-    if (!container) return;
-
-    // évite les doublons
-    if (container.querySelector(".yt-open-btn")) return;
-
-    // s'assure que le conteneur peut accueillir un bouton en overlay
-    container.classList.add("yt-embed-wrap");
-
-    const btn = document.createElement("a");
-    btn.href = watchUrl;
-    btn.target = "_blank";
-    btn.rel = "noopener noreferrer";
-    btn.className = "yt-open-btn";
-    btn.textContent = isAndroid ? "YouTube (Android)" : "YouTube";
-    btn.setAttribute(
-      "aria-label",
-      isAndroid ? "Ouvrir la vidéo dans l’application YouTube" : "Ouvrir la vidéo sur YouTube"
-    );
-
-    container.appendChild(btn);
-  });
-});
+})();

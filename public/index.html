@@ -16,9 +16,11 @@
   />
 
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="style-rich-media.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <script defer src="script.js"></script>
+  <script defer src="script-rich-media.js"></script>
 
   <meta
     name="description"
@@ -29,7 +31,7 @@
 <body class="nv-theme-sun">
   <!-- ================= CONTACT FACEBOOK ================= -->
   <a
-    href="https://www.facebook.com/profile.php?id=61576816498498"
+    href="https://www.facebook.com/profile.php?id=61587515131360"
     class="fb-contact-btn"
     target="_blank"
     rel="noopener noreferrer"
@@ -64,7 +66,7 @@
   >
     <div class="side-menu-header">
       <div class="side-menu-brand">
-        <img src="logo.png" alt="" class="side-menu-logo" />
+        <img src="assets/img/logo-256.webp" width="256" height="256" alt="" class="side-menu-logo" />
         <div class="side-menu-brandtext">
           <p class="brand-title">Chantraine À-Venir</p>
           <p class="brand-subtitle">Municipales 2026</p>
@@ -152,21 +154,33 @@
         <!-- PHOTO D'EQUIPE EN PREMIER -->
         <div class="hero-team-photo-wrapper">
           <img
-            src="equipe.jpg"
+            src="assets/img/equipe-1280.webp"
+            srcset="assets/img/equipe-768.webp 768w, assets/img/equipe-1280.webp 1280w, assets/img/equipe-1920.webp 1920w"
+            sizes="(max-width: 768px) 92vw, (max-width: 1200px) 70vw, 750px"
             alt="Photo de l'équipe Chantraine À-Venir réunie"
             class="hero-team-photo"
+            width="2332"
+            height="1060"
             loading="eager"
+            fetchpriority="high"
           />
         </div>
 
         <!-- GRENOUILLE EN BAS -->
         <div class="hero-visual">
-          <img
-            src="accueil-grenouille.gif"
-            alt="Logo animé Chantraine À-Venir"
-            class="hero-logo"
-            loading="eager"
-          />
+          <video
+            class="hero-logo hero-logo-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/img/accueil-grenouille-poster-360.webp"
+            aria-label="Logo animé Chantraine À-Venir"
+          >
+            <source src="assets/video/accueil-grenouille.webm" type="video/webm" />
+            <source src="assets/video/accueil-grenouille.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
     </div>
@@ -176,9 +190,13 @@
       <div class="message-card-compact">
         <div class="message-photo">
           <img
-            src="dany.png"
+            src="assets/img/dany-360.webp"
+            srcset="assets/img/dany-240.webp 240w, assets/img/dany-360.webp 360w"
+            sizes="(max-width: 640px) 100px, 140px"
             alt="Jean-Daniel Boxberger, tête de liste Chantraine À-Venir"
             class="message-photo-img"
+            width="394"
+            height="696"
             loading="eager"
           />
         </div>
@@ -286,7 +304,7 @@
           <article class="video-card">
             <div class="video-card-media">
               <iframe
-                src="https://www.youtube.com/embed/rJgSASCsFSE"
+                src="https://www.youtube.com/embed/3toHL175wg8"
                 title="Sport & Jeunesse - Chantraine à Venir"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -384,9 +402,13 @@
 
         <div class="team-preview reveal">
           <img
-            src="equipe.jpg"
+            src="assets/img/equipe-1280.webp"
+            srcset="assets/img/equipe-768.webp 768w, assets/img/equipe-1280.webp 1280w, assets/img/equipe-1920.webp 1920w"
+            sizes="(max-width: 1024px) 92vw, 1080px"
             alt="Photo de l'équipe Chantraine À-Venir"
             class="team-photo"
+            width="2332"
+            height="1060"
             loading="lazy"
           />
           <div class="team-overlay">
@@ -699,7 +721,16 @@
           </div>
 
           <div class="contact-visual" aria-hidden="true">
-            <img src="grenoumail.png" alt="" class="contact-illustration-img" loading="lazy" />
+            <img
+              src="assets/img/grenoumail-560.webp"
+              srcset="assets/img/grenoumail-320.webp 320w, assets/img/grenoumail-560.webp 560w"
+              sizes="(max-width: 768px) 50vw, 320px"
+              alt=""
+              class="contact-illustration-img"
+              width="758"
+              height="568"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -711,7 +742,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="logo.png" alt="" class="footer-logo" aria-hidden="true" />
+          <img src="assets/img/logo-256.webp" width="256" height="256" alt="" class="footer-logo" aria-hidden="true" />
           <div>
             <p class="footer-name">Chantraine À-Venir</p>
             <p class="footer-tagline">Municipales 2026</p>
@@ -743,13 +774,13 @@
 
       <div class="nv-content">
         <p class="nv-kicker">🎬 Nouvelle vidéo en ligne</p>
-        <p class="nv-title">Démocratie participative</p>
+        <p class="nv-title">Sport &amp; Jeunesse</p>
 
         <!-- clic = ouvre la vidéo en grand -->
         <button class="nv-thumb" type="button" data-open-video>
           <img
-            src="https://i.ytimg.com/vi/S89rmeoCzvk/hqdefault.jpg"
-            alt="Miniature : Démocratie participative"
+            src="https://i.ytimg.com/vi/3toHL175wg8/hqdefault.jpg"
+            alt="Miniature : Sport & Jeunesse"
             loading="lazy"
           />
           <span class="nv-playbadge" aria-hidden="true">▶</span>

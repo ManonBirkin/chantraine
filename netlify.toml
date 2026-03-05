@@ -1,5 +1,5 @@
 [build]
-  publish = "."
+  publish = "public"
   functions = "netlify/functions"
 
 [functions]
@@ -18,3 +18,29 @@
   to = "/colistiers/documents.html"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/documents"
+  to = "/colistiers/documents.html"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

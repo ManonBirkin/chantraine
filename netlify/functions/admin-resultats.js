@@ -98,11 +98,19 @@ async function getAllResponses() {
   const { blobs } = await store.list();
 
   const responses = [];
-  for (const blob of blobs) {
-    const data = await store.get(blob.key, { type: "json" });
-    if (data) {
-      responses.push(data);
-    }
+  const BATCH_SIZE = 25;
+
+  for (let i = 0; i < blobs.length; i += BATCH_SIZE) {
+    const batch = blobs.slice(i, i + BATCH_SIZE);
+    const batchResults = await Promise.all(
+      batch.map((blob) =>
+        store.get(blob.key, { type: "json" }).catch(() => null)
+      )
+    );
+
+    batchResults.forEach((entry) => {
+      if (entry) responses.push(entry);
+    });
   }
 
   // Sort by submission date (most recent first)
