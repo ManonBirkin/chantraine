@@ -3856,6 +3856,57 @@ main .section .container > .section-copyright-note {
   .vc-btn{ width:36px; height:36px; font-size:22px; }
   .vc-card{ flex-basis: 78vw; }
 }
+
+/* ===== Publications Facebook (section equipe) ===== */
+.social-band {
+  margin: 1.25rem 0 1.75rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(30, 58, 95, 0.05);
+  border: 1px solid rgba(30, 58, 95, 0.12);
+}
+
+.social-band__head {
+  margin-bottom: 0.75rem;
+}
+
+.social-band__title {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--primary, #1e3a5f);
+}
+
+.social-band__subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.92rem;
+  color: rgba(21, 42, 69, 0.75);
+}
+
+.social-track {
+  align-items: flex-start;
+}
+
+.social-card {
+  flex: 0 0 clamp(320px, 78vw, 500px);
+}
+
+.social-post-embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .social-band {
+    padding: 0.85rem;
+  }
+
+  .social-card {
+    flex-basis: 88vw;
+  }
+}
 /* Infographie globale — très petite */
 .infographic--small {
   width: 30%;
