@@ -2512,6 +2512,7 @@ main .section .container > .section-copyright-note {
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
+  border-left: 6px solid #b71c1c;
   max-width: 520px;
   margin: 0 auto;
   position: relative;
@@ -2519,13 +2520,7 @@ main .section .container > .section-copyright-note {
 }
 
 .message-card-compact::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-  background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
+  content: none;
 }
 
 .message-card-compact .message-photo {
