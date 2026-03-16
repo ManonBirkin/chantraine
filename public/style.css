@@ -2523,9 +2523,9 @@ main .section .container > .section-copyright-note {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
 }
 
 .message-card-compact .message-photo {
@@ -2549,30 +2549,6 @@ main .section .container > .section-copyright-note {
 
 .message-card-compact .message-content {
   text-align: center;
-}
-
-.message-countdown {
-  display: block;
-  width: min(100%, 620px);
-  margin: 0 auto var(--space-md);
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(30, 58, 95, 0.22);
-  background: linear-gradient(135deg, rgba(30, 58, 95, 0.14), rgba(30, 58, 95, 0.08));
-  color: var(--primary);
-  font-size: clamp(0.78rem, 1.55vw, 0.96rem);
-  font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-align: center;
-  box-shadow: 0 10px 24px rgba(30, 58, 95, 0.14);
-}
-
-.hero-duo-message > .message-countdown-top {
-  align-self: center;
-  margin-top: 0;
-  margin-bottom: var(--space-md);
 }
 
 .message-card-compact .message-title {
